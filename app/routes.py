@@ -6,6 +6,11 @@ from .models import Event
 def index():
     return render_template("index.html")
 
+#temporary
+@app.route("/events/event1")
+def event1():
+    return render_template("events/event1.html")
+
 @app.route("/<int:event_id>", methods=["GET"])
 def getEvent(event_id):
     event = Event.query.get(event_id)
