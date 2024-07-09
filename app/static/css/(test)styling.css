@@ -1,0 +1,40 @@
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* Individual event styling */
+
+.event h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #4CAF50;
+}
+
+.event p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Article styling */
+article {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+article h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+article p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 1rem;
+}

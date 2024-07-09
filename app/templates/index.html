@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Home Page</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/styling.css">
 </head>
 <body>
     <header>
         <h1>Welcome to Our Events Page</h1>
     </header>
     <main>
-        <article id="events">
-            <div class="event1" data-article="{{ url_for('event1') }}">
+        <section id="events">
+            <article class="event-card" data-article="{{ url_for('event1') }}">
                 <h2>Event 1</h2>
                 <p>Date: June 10, 2024</p>
                 <p>Description of the event goes here. You can include any details about the event, photos, and other relevant information.</p>
-            </div>
-        </article>
+            </article>
+        </section>
     </main>
+    <footer>
+        <p>&copy; 2024 Eventer. All rights reserved.</p>
+        <nav>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
     <script src="../static/js/scripts.js"></script>
 </body>
 </html>
