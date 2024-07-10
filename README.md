@@ -1,5 +1,6 @@
 1. Shows events of Timisoara
-2. Everyone can make accounts and invite friends to event
-3. friends can see what events you attend
-4. People can create events
-5. example: Primaria Timisoara makes an account and starts to post events
+2. People can login and create events
+3. Example: Primaria Timisoara makes an account and starts to post events
+Everyone can make accounts and invite friends to event ? (should we implement)
+Friends can see what events you attend ? (should we implement)
+ 
