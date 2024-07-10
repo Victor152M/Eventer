@@ -6,7 +6,6 @@ from .models import Event
 def index():
     return render_template("index.html")
 
-#temporary
 @app.route("/events/event1")
 def event1():
     return render_template("events/event1.html")
