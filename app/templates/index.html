@@ -12,11 +12,12 @@
     </header>
     <main>
         <section id="events">
-            <article class="event-card" data-article="{{ url_for('event1') }}">
-                <h2>Event 1</h2>
-                <p>Date: June 10, 2024</p>
-                <p>Description of the event goes here. You can include any details about the event, photos, and other relevant information.</p>
-            </article>
+                <article class="event-card" data-article="{{ url_for('event1') }}">
+                    <img src="{{ url_for('static', filename='images/event1.jpeg') }}" alt="Event 1 Image">
+                    <h2>Event 1</h2>
+                    <p>Date: June 10, 2024</p>
+                    <p>Description of the event goes here. You can include any details about the event, photos, and other relevant information.</p>
+                </article>
         </section>
     </main>
     <footer>
