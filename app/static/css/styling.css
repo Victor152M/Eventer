@@ -14,19 +14,25 @@ header {
     width: 100%;
     height: 45px;
     padding: 15px 0;
-    border: solid red 1px;
 }
 
 .logo {
     width: 45px;
-    border: solid 1px pink;
     padding: 0 0 0 1.5rem;
 }
 
 .hamburger_menu {
     width: 45px;
-    border: solid 1px pink;
     padding: 0 1.5rem 0 0;
+}
+
+.hero__sec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 0; 
+    background-color: #b350af;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
