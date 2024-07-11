@@ -13,14 +13,15 @@ header {
 }
 /* Navbar and menu*/
 /*By default, the menu is created for the mobile version of the website*/
-.menu__active {
+.menu_active {
     top: 0;
     position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    width: 80vw;
+    width: 60vw;
     height: 100vh;
+    padding: 5rem 3rem;
     background-color: #333;
     color: aliceblue;
     transform: translate(-5000px);
@@ -28,11 +29,58 @@ header {
     z-index: 4;
 }
 
-.navbar { 
-    border: solid 1px red;
-    padding: 1rem 0 1rem 0;
+.search_bar {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    width: 90%;
+    border: solid 1px white;
+    border-radius: 5px;
+}
+
+.register_button {
+    font-size: 1.3rem;
+    margin: 20px 0 10px 0;
+}
+
+.register_button:hover {
+    font-size: 1.37rem;
+    background-color: brown;
+}
+
+.navigation_links {
+    display: block;
+    border-top: solid 1px #e0f7fa;
+    border-bottom: solid 1px #e0f7fa;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.event_link {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.event_link a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color:aliceblue;
+}
+
+.post_event {
+    margin: 10px 0;
+    font-size: 1.3rem;
+}
+
+.post_event:hover {
+    cursor: pointer;
+    font-size: 1.37rem;
+    background-color: brown;
+}
+
+.navbar { 
+    display: flex;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 45px;
@@ -45,7 +93,6 @@ header {
 }
 
 .logos {
-    border: solid 1px red;
     display: flex;
     align-items: center;
 }
@@ -64,7 +111,6 @@ header {
 }
 
 .menu {
-    border: solid 1px brown;
     display: flex;
 }
 
@@ -80,31 +126,30 @@ header {
     cursor: pointer;
 }
 
-.contact {
-    border: solid 1px orange;
+.cities {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.contact a {
+.cities a {
     text-decoration: none;
     color: black;
 }
 
-.contact p {
+.cities p {
     padding: 0 0 0 15px;
     font-size: 1.1rem;
 }
 
-.phone_icon {
+.city_icon {
     width: 35px;
 }
 
 /*Creating a media-query designed to upgrade the desktop version of the menu */
 @media screen and (min-width: 700px) {
-    .menu__active {
-        width: 50vw;
+    .menu_active {
+        width: 35vw;
         height: 100vh;
     }
 
@@ -119,7 +164,7 @@ header {
 }
 /* Hero section */
 .hero_sec {
-    height: 1000px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
