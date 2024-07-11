@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Playwrite';
+    src: url('../fonts/Playwrite_BE_VLG/static/PlaywriteBEVLG-Regular.ttf'); 
+  }
+
 header {
     background-color: #4CAF50;
     color: white;
@@ -24,6 +29,8 @@ header {
 }
 
 .navbar { 
+    border: solid 1px red;
+    padding: 1rem 0 1rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,14 +44,28 @@ header {
     background-color: #4CAF50;
 }
 
-.logo {
-    width: 45px;
-    padding: 0 0 0 25px;
+.logos {
+    border: solid 1px red;
+    display: flex;
+    align-items: center;
 }
 
-.menu_buttons {
+.logo_img {
+    width: 45px;
+}
+
+.logo_text {
+    padding: 0 0 0 10px;
+    font-size: 1.5rem;
+    font-family: 'Playwrite';
+    color:#e0f7fa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu {
+    border: solid 1px brown;
     display: flex;
-    padding: 0 25px 0 0;
 }
 
 .hamburger_menu {
@@ -57,6 +78,27 @@ header {
     display: none;
     width: 45px;
     cursor: pointer;
+}
+
+.contact {
+    border: solid 1px orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact a {
+    text-decoration: none;
+    color: black;
+}
+
+.contact p {
+    padding: 0 0 0 15px;
+    font-size: 1.1rem;
+}
+
+.phone_icon {
+    width: 35px;
 }
 
 /*Creating a media-query designed to upgrade the desktop version of the menu */
