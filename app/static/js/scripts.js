@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Turns the hamburger menu into a X after pressing it and opens the menu
-// from the right, and then undoing everything if pressed 2nd time
+// from the left, and then undoing everything if pressed 2nd time
 let changer = true;
 function menuDictating() {
     var menu_active = document.getElementById("menu__body"); 

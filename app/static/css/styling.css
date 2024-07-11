@@ -6,10 +6,11 @@ header {
     width: 100%;
     display: block;
 }
-
+/* Navbar and menu*/
 /*By default, the menu is created for the mobile version of the website*/
 .menu__active {
-    position: absolute;
+    top: 0;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -19,7 +20,7 @@ header {
     color: aliceblue;
     transform: translate(-5000px);
     transition: transform 0.5s ease;
-    z-index: 2;
+    z-index: 4;
 }
 
 .navbar { 
@@ -29,6 +30,11 @@ header {
     width: 100%;
     height: 45px;
     padding: 15px 0;
+    top: 0;
+    position: sticky;
+    z-index: 3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #4CAF50;
 }
 
 .logo {
@@ -59,9 +65,19 @@ header {
         width: 50vw;
         height: 100vh;
     }
-}
 
+    .navbar { 
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 45px;
+        padding: 15px 0;
+    }
+}
+/* Hero section */
 .hero_sec {
+    height: 1000px;
     display: flex;
     align-items: center;
     justify-content: center;
