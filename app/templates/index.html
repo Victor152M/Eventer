@@ -7,13 +7,22 @@
     <link rel="stylesheet" href="../static/css/styling.css">
 </head>
 <body>
+    <div id="menu__body" class="menu__active">
+        <p>aa</p>
+        <p>bb</p>
+        <p>cc</p>
+        <p>dd</p>
+    </div>
     <header>
         <nav class="navbar">
             <a href="#"><img class="logo" src="../static/images/logo.png" alt="error img"></a>
-            <a href="#"><img class="hamburger_menu" src="../static/images/hamburger_menu.png" alt="error img"></a>
+            <div class="menu_buttons">
+                <img id="menu__opener" onclick="menuDictating()" class="hamburger_menu" src="../static/images/hamburger_menu.png" alt="error img">
+                <img id="menu__closer" onclick="menuDictating()" class="x_button" src="../static/images/close.png" alt="error img">
+            </div>
         </nav>
-        <div class="hero__sec">
-            Check out the most interesting events that take place in Timisoara!
+        <div class="hero_sec">
+            Check out the most interesting events that will take place in Timisoara!
         </div>
     </header>
     <main>

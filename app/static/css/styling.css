@@ -7,6 +7,21 @@ header {
     display: block;
 }
 
+/*By default, the menu is created for the mobile version of the website*/
+.menu__active {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 80vw;
+    height: 100vh;
+    background-color: #333;
+    color: aliceblue;
+    transform: translate(-5000px);
+    transition: transform 0.5s ease;
+    z-index: 2;
+}
+
 .navbar { 
     display: flex;
     justify-content: space-between;
@@ -18,15 +33,35 @@ header {
 
 .logo {
     width: 45px;
-    padding: 0 0 0 1.5rem;
+    padding: 0 0 0 25px;
+}
+
+.menu_buttons {
+    display: flex;
+    padding: 0 25px 0 0;
 }
 
 .hamburger_menu {
+    display: flex;
     width: 45px;
-    padding: 0 1.5rem 0 0;
+    cursor: pointer;
 }
 
-.hero__sec {
+.x_button {
+    display: none;
+    width: 45px;
+    cursor: pointer;
+}
+
+/*Creating a media-query designed to upgrade the desktop version of the menu */
+@media screen and (min-width: 700px) {
+    .menu__active {
+        width: 50vw;
+        height: 100vh;
+    }
+}
+
+.hero_sec {
     display: flex;
     align-items: center;
     justify-content: center;
