@@ -10,7 +10,11 @@ def index():
 def event1():
     return render_template("events/event1.html")
 
+@app.route("/post_event", methods=["GET", "POST"])
+def post_event():
+    return render_template("post_event.html")
+
 @app.route("/<int:event_id>", methods=["GET"])
-def getEvent(event_id):
+def get_event(event_id):
     event = Event.query.get(event_id)
     return render_template("single_event.html", event=event)
