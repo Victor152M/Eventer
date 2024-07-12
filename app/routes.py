@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, request
 from .models import Event
 
 @app.route("/")
@@ -12,9 +12,16 @@ def event1():
 
 @app.route("/post_event", methods=["GET", "POST"])
 def post_event():
-    return render_template("post_event.html")
+    if request.method == "POST":
+        title = request.form["title"]
+        description = request.form["description"]
+        image = request.files["image"]
+        return render_template("post_event.html")
 
 @app.route("/<int:event_id>", methods=["GET"])
 def get_event(event_id):
     event = Event.query.get(event_id)
     return render_template("single_event.html", event=event)
+
+### HELPER FUNCTIONS ###
+
