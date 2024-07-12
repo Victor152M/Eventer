@@ -1,7 +1,8 @@
 In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 
 Victor:
-- lucrez o pagina pentru postarea evenimentelor
+# Pagina pentru postarea evenimentelor
+- 
 
 Vasile:
 - lucrez la pagina fiecarui eveniment
