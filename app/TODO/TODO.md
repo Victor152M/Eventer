@@ -13,4 +13,5 @@ Things that are done:
 - thing done (by Vasi)
 - thing done (by Victor)
 
-
+Vasile:
+- lucrez la pagina fiecarui eveniment
