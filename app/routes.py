@@ -1,6 +1,7 @@
+import os
 from app import app
 from flask import render_template, request, flash, redirect, url_for
-from .models import Event
+from .models import Event, db
 from werkzeug.utils import secure_filename
 
 @app.route("/")
@@ -15,8 +16,9 @@ def event1():
 def post_event():
     if request.method == "POST":
         # check if the post request has the file part
-        print("POST")
-        if "file" not in request.files:
+        if "image" not in request.files:
+            #do flashes actually work?
+            #do they do anything?
             flash("No file part")
             return redirect(request.url)
         title = request.form["title"]
@@ -24,19 +26,20 @@ def post_event():
         image = request.files["image"]
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
-        if file.filename == '':
+        if image.filename == '':
             flash("No selected file")
             return redirect(request.url)
 
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            print(image_path)
             image.save(image_path)
-
-            new_event = Event(title, description, filename).saveToDB()
-
+            new_event = Event(title=title, description=description, image=image_path)
+            new_event.saveToDB()
+            print("Event added successguly")
             flash("The event was added successfully ;)")
-            return redirect(url_for("index.html"))
+            return redirect(url_for("index"))
         else:
             flash('Invalid file type. Please upload an image.')
     return render_template("post_event.html")

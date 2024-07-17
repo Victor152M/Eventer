@@ -3,6 +3,13 @@
     src: url('../fonts/Playwrite_BE_VLG/static/PlaywriteBEVLG-Regular.ttf'); 
   }
 
+/* This is a good practice I think, why aren't we using it by default?
+* {
+    box-sizing: border-box;
+}
+*/
+
+
 header {
     background-color: #4CAF50;
     color: white;

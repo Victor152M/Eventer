@@ -1,17 +1,18 @@
 from flask_sqlalchemy import SQLAlchemy
 
+#The db is initialized in __init__.py
 db = SQLAlchemy()
 
 class Event(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80), unique=False, nullable=False)
-    description = db.Column(db.String(1000), unique=False, nullable=False)
-    image_filename = db.Column(db.String(255), unique=False, nullable=False)
+    id = db.Column("id", db.Integer, primary_key=True)
+    title = db.Column("title", db.String(80), unique=False, nullable=False)
+    description = db.Column("description", db.String(1000), unique=False, nullable=False)
+    image_filename = db.Column("filename", db.String(500), unique=False, nullable=False)
 
-    def __init__(self, name, description, image):
-        self.name = name
+    def __init__(self, title, description, image):
+        self.title = title
         self.description = description
-        self.image = image
+        self.image_filename = image
 
     def saveToDB(self):
         db.session.add(self)
