@@ -7,7 +7,7 @@ class Event(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     title = db.Column("title", db.String(80), unique=False, nullable=False)
     description = db.Column("description", db.String(1000), unique=False, nullable=False)
-    image_filename = db.Column("filename", db.String(500), unique=False, nullable=False)
+    image_filename = db.Column("filename", db.String(255), unique=False, nullable=False)
 
     def __init__(self, title, description, image):
         self.title = title
