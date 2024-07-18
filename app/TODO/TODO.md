@@ -2,8 +2,7 @@ In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 
 Victor:
 # Pagina pentru postarea evenimentelor
-- make the home page properly display events
-
+- change the Event model (add date, location, etc)
 
 Vasile:
 - daca poti sa faci pagina de index sa arate nice
@@ -22,5 +21,6 @@ TODO:
 Things that are done:
 - evenimentele pot fi incarcate si salvate in database (by Victor)
 - genereaza pagini web din evenimentele din baza de date (by Victor)
+- make the home page properly display events (by Victor)
 
 
