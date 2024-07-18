@@ -47,12 +47,17 @@
     </header>
     <main>
         <section id="events">
-                <article class="event-card" data-article="{{ url_for('event1') }}">
-                    <img src="{{ url_for('static', filename='images/event1.jpeg') }}" alt="Event 1 Image">
-                    <h2>Event 1</h2>
+            {% for event in events %}
+                <article class="event-card" data-article="{{ url_for('get_event', event_id=event.id) }}">
+                    <img src="{{ url_for('static', 
+                    filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
+                    alt="{{ event.title }}">
+                    <h2>{{ event.title }}</h2>
                     <p>Date: June 10, 2024</p>
-                    <p>Description of the event goes here. You can include any details about the event, photos, and other relevant information.</p>
+                    <!-- make this description not show "..." if the text is short enough -->
+                    <p>{{ event.description[:140] + "..." }}</p>
                 </article>
+            {% endfor %}
         </section>
     </main>
     <footer>

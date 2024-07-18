@@ -6,7 +6,8 @@ from werkzeug.utils import secure_filename
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    events = db.session.query(Event)
+    return render_template("index.html", events=events)
 
 @app.route("/post_event", methods=["GET", "POST"])
 def post_event():
@@ -29,7 +30,6 @@ def post_event():
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            print(image_path)
             image.save(image_path)
             new_event = Event(title=title, description=description, image=image_path)
             new_event.saveToDB()
@@ -44,10 +44,6 @@ def post_event():
 def get_event(event_id):
     event = Event.query.get(event_id)
     return render_template("events/event.html", event=event)
-
-@app.route("/events/event1")
-def event1():
-    return render_template("events/event1.html")
 
 @app.route("/db_entries")
 def db_entries():
