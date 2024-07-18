@@ -8,10 +8,6 @@ from werkzeug.utils import secure_filename
 def index():
     return render_template("index.html")
 
-@app.route("/events/event1")
-def event1():
-    return render_template("events/event1.html")
-
 @app.route("/post_event", methods=["GET", "POST"])
 def post_event():
     if request.method == "POST":
@@ -44,10 +40,19 @@ def post_event():
             flash('Invalid file type. Please upload an image.')
     return render_template("post_event.html")
 
-@app.route("/<int:event_id>", methods=["GET"])
+@app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
     event = Event.query.get(event_id)
-    return render_template("single_event.html", event=event)
+    return render_template("events/event.html", event=event)
+
+@app.route("/events/event1")
+def event1():
+    return render_template("events/event1.html")
+
+@app.route("/db_entries")
+def db_entries():
+    events = db.session.query(Event)
+    return render_template("events/db_entries.html", events=events)
 
 ### helper functions ###
 def allowed_file(filename):
