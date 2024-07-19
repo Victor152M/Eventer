@@ -9,9 +9,8 @@
 }
 */
 
-
 header {
-    background-color: #4CAF50;
+    background-color: #FFE100;
     color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     height: auto;
@@ -85,6 +84,14 @@ header {
     background-color: brown;
 }
 
+.post_event a:visited {
+    color: #e0f7fa;
+}
+
+.post_event a{
+    text-decoration: none;
+}
+
 .navbar { 
     display: flex;
     justify-content: space-around;
@@ -96,7 +103,7 @@ header {
     position: sticky;
     z-index: 3;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    background-color: #4CAF50;
+    background-color: #FFE100;
 }
 
 .logos {
