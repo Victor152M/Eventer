@@ -9,9 +9,6 @@
 </head>
 <body id="body">
     <div id="menu__body" class="menu_active">
-        <div class="search_bar">
-            Search for an event
-        </div>
         <div class="register_button">
             Register as an event organiser
         </div>
@@ -41,21 +38,22 @@
                 <img id="menu__closer" onclick="menuDictating()" class="x_button" src="../static/images/close.png" alt="error img">
             </div>
         </nav>
+    </header>
+    <main>
         <div class="hero_sec">
             Check out the most interesting events that will take place in Timisoara!
         </div>
-    </header>
-    <main>
         <section id="events">
             {% for event in events %}
                 <article class="event-card" data-article="{{ url_for('get_event', event_id=event.id) }}">
                     <img src="{{ url_for('static', 
                     filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
                     alt="{{ event.title }}">
-                    <h2>{{ event.title }}</h2>
-                    <p>Date: June 10, 2024</p>
+                    <h3>{{ event.title }}</h3>
+                    <p class="date">Date: June 10, 2024</p>
+                    <p class="location">Location: Timisoara, Parcul Copiilor</p>
                     <!-- make this description not show "..." if the text is short enough -->
-                    <p>{{ event.description[:140] + "..." }}</p>
+                    <!--<p> event.description[:140] + "..." </p> PS: add 2 curly braces for usage-->
                 </article>
             {% endfor %}
         </section>
