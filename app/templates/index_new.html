@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Home Page</title>
+    <link rel="icon" href="../static/images/logo.png"/>
+    <link rel="stylesheet" href="../static/css/index_new.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-item">
+            <div class="icon"></div>
+            <span class="label">Menu</span>
+        </div>
+        <div class="nav-item active">
+            <div class="icon"></div>
+            <span class="label">Add</span>
+        </div>
+        <div class="nav-item">
+            <div class="icon"></div>
+            <span class="label">Search</span>
+        </div>
+        <div class="nav-item">
+            <div class="icon"></div>
+            <span class="label">Events</span>
+        </div>
+        <div class="nav-item">
+            <div class="icon"></div>
+            <span class="label">Profile</span>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <header>
+            <nav class="navbar">
+                <div class="logos">
+                    <a href="#"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
+                    <a href="#" class="logo_text">Eventer</a>
+                </div>
+                <div class="cities">
+                    <a href="#"><img class="city_icon" src="../static/images/city.png" alt="rooro"></a>
+                    <a href="#"><p>Cities</p></a>
+                </div>
+            </nav>
+            <div class="hero_sec">
+                Check out the most interesting events that will take place in Timisoara!
+            </div>
+        </header>
+        <main>
+            <section id="events">
+                {% for event in events %}
+                    <article class="event-card" data-article="{{ url_for('get_event', event_id=event.id) }}">
+                        <img src="{{ url_for('static',
+                        filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}"
+                        alt="{{ event.title }}">
+                        <h2>{{ event.title }}</h2>
+                        <p>Date: June 10, 2024</p>
+                        <p>{{ event.description[:140] + "..." if event.description|length > 140 else event.description }}</p>
+                    </article>
+                {% endfor %}
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Eventer. All rights reserved.</p>
+            <nav>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#">Contact Us</a>
+            </nav>
+        </footer>
+    </div>
+    
+    <script src="../static/js/scripts.js"></script>
+</body>
+</html>
