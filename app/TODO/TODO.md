@@ -2,19 +2,18 @@ In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 
 Victor:
 # Pagina pentru postarea evenimentelor
-- change the Event model (add date, location, etc)
+- fa pagina de index sa arate bine
 
 Vasile:
-- daca poti sa faci pagina de index sa arate nice
-(ori alege altceva daca vrei)
+(alege ce vrei din TODO ori altcv)
 
 TODO:
 - rezolva problema: daca imaginile uploadata au acelasi nume (si deci acceasi locatie), nu mai stim pe care dintre imagini sa le folosim pe pagina evenimentului
 - add a navigation bar on all pages of the website
-- fa pagina de index sa arate bine
 - adauga o data pentru fiecare eveniment
 - fa pagina de "upload event" sa arate bine
 - make the descriptions not show "..." if the text is short enough (on the home page)
+- change the Event model (add date, location, etc)
 
 
 (Adaugam ce am facut fiecare)
