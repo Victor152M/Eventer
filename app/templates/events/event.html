@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ event.title }}</title>
     <link rel="stylesheet" href="../static/css/event.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
 </head>
 <body>
     <header>
-        <h1>{{ event.title }}</h1>
+        <nav class="navbar">
+            <div class="logos">
+                <a href="#"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
+                <a href="#" class="logo_text">Eventer</a>
+            </div>
+            <div class="cities">
+                <a href="#"><img class="city_icon" src="../static/images/city.png" alt="rooro"></a>
+                <a href="#"><p>Cities</p></a>
+            </div>
+            <div class="menu">
+                <img id="menu__opener" onclick="menuDictating()" class="hamburger_menu" src="../static/images/hamburger_menu.png" alt="error img">
+                <img id="menu__closer" onclick="menuDictating()" class="x_button" src="../static/images/close.png" alt="error img">
+            </div>
+        </nav>
     </header>
     <main>
+        <h1>{{ event.title }}</h1>
         <img src="{{ url_for('static', 
         filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
         alt="{{ event.title }}" class="event-image">
@@ -27,5 +42,6 @@
             <a href="" class="cta-button">Buy Tickets</a>
         </div>
     </main>
+    <script src="../static/js/navbar.js"></script>
 </body>
 </html>
