@@ -5,16 +5,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
 
-/* This is a good practice I think, why aren't we using it by default?
+/* This is a good practice I think, why aren't we using it
+ by default? */
 * {
     box-sizing: border-box;
 }
-*/
 
 header{
     position: -webkit-sticky; /* For Safari */
     position: sticky;
-    z-index: 1000;
+    z-index: 10;
     top: 0;
     background-color: #ffd903;
     color: white;
@@ -31,14 +31,12 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: start;
-    width: 40vw;
     height: 100vh;
-    padding: 5rem 3rem;
     background-color: #3f3f3f;
     color: white;
-    transform: translate(-7000px);
+    transform: translate(-5000px);
     transition: transform 0.5s ease;
-    z-index: 4;
+    z-index: 11;
 }
 
 .search_bar {
@@ -64,7 +62,7 @@ header{
     display: block;
     border-top: solid 1px #e0f7fa;
     border-bottom: solid 1px #e0f7fa;
-    padding: 0;
+    padding: 2.5rem 0;
     margin: 20px 0;
 }
 
@@ -76,7 +74,7 @@ header{
 .event_link a {
     font-size: 1.4rem;
     text-decoration: none;
-    color:aliceblue;
+    color:rgb(255, 255, 255);
 }
 
 .post_event {
@@ -91,7 +89,7 @@ header{
 }
 
 .post_event a:visited {
-    color: #e0f7fa;
+    color: #ffffff;
 }
 
 .post_event a{
@@ -103,8 +101,8 @@ header{
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 45px;
-    padding: 15px 0;
+    height: 3rem;
+    padding: 40px;
     top: 0;
     position: sticky;
     z-index: 3;
@@ -178,10 +176,10 @@ header{
         justify-content: space-around;
         align-items: center;
         width: 100%;
-        height: 45px;
-        padding: 15px 0;
+        height: 0;
     }
 }
+
 /* Hero section */
 .hero {
     height: 200px;
@@ -211,6 +209,11 @@ header{
     flex-direction: column;
     justify-content: center;
     color:#ffd903;
+}
+
+.hero-left h2 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 5%;
 }
 
 .hero-right img {
@@ -255,12 +258,9 @@ footer {
     height: 2.5rem;
 }
 
-footer nav a:hover {
-    text-decoration: underline;
-}
-
 footer nav {
     color: #3f3f3f;
+    background-color: #ffd903;
 }
 
 footer nav a:visited{
