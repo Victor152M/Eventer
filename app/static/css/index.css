@@ -39,25 +39,6 @@ header{
     z-index: 11;
 }
 
-.search_bar {
-    display: flex;
-    align-items: center;
-    height: 35px;
-    width: 90%;
-    border: solid 1px white;
-    border-radius: 5px;
-}
-
-.register_button {
-    font-size: 1.3rem;
-    margin: 20px 0 10px 0;
-}
-
-.register_button:hover {
-    font-size: 1.37rem;
-    background-color: brown;
-}
-
 .navigation_links {
     display: block;
     border-top: solid 1px #e0f7fa;

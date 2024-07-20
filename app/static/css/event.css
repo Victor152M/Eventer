@@ -55,3 +55,37 @@ h1 {
 .cta-button:hover {
     background-color: #c0392b;
 }
+
+.menu_active {
+    top: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100vh;
+    background-color: #3f3f3f;
+    color: white;
+    transform: translate(-5000px);
+    transition: transform 0.5s ease;
+    z-index: 11;
+}
+
+.hamburger_menu {
+    display: flex;
+    width: 45px;
+    cursor: pointer;
+}
+
+.x_button {
+    display: none;
+    width: 45px;
+    cursor: pointer;
+}
+
+.navigation_links {
+    display: block;
+    border-top: solid 1px #e0f7fa;
+    border-bottom: solid 1px #e0f7fa;
+    padding: 0;
+    margin: 20px 0;
+}
