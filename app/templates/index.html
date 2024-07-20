@@ -9,11 +9,8 @@
 </head>
 <body id="body">
     <div id="menu__body" class="menu_active">
-        <div class="register_button">
-            Register as an event organiser
-        </div>
         <ul class="navigation_links">
-            <li class="event_link"><a href="#">About</a></li>
+            <li class="event_link"><a href="#">Home</a></li>
             <li class="event_link"><a href="#">Events</a></li>
             <li class="event_link"><a href="#">Cities</a></li>
             <li class="event_link"><a href="#">Dates</a></li>
@@ -40,9 +37,9 @@
         </nav>
     </header>
     <main>
-        <div class="hero_sec">
+        <section class="hero_sec">
             Check out the most interesting events that will take place in Timisoara!
-        </div>
+        </section>
         <section id="events">
             {% for event in events %}
                 <article class="event-card" data-article="{{ url_for('get_event', event_id=event.id) }}">
@@ -50,8 +47,8 @@
                     filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
                     alt="{{ event.title }}">
                     <h3>{{ event.title }}</h3>
-                    <p class="date">Date: June 10, 2024</p>
-                    <p class="location">Location: Timisoara, Parcul Copiilor</p>
+                    <p class="event-date">Date: June 10, 2024</p>
+                    <p class="event-location">Location: Timisoara, Parcul Copiilor</p>
                     <!-- make this description not show "..." if the text is short enough -->
                     <!--<p> event.description[:140] + "..." </p> PS: add 2 curly braces for usage-->
                 </article>

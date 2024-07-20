@@ -3,6 +3,8 @@
     src: url('../fonts/Playwrite_BE_VLG/static/PlaywriteBEVLG-Regular.ttf'); 
   }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
 /* This is a good practice I think, why aren't we using it by default?
 * {
     box-sizing: border-box;
@@ -197,6 +199,9 @@ body {
     color: #333;
     line-height: 1.6;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 body, h1, h2, p {
@@ -206,9 +211,11 @@ body, h1, h2, p {
 }
 
 main {
-    padding: 2rem 1rem;
-    max-width: 1000px;
+    padding-left: 8%;
+    padding-right: 8%;
+    max-width: 100%;
     margin: 0 auto;
+    flex: 1;
 }
 
 footer {
@@ -217,6 +224,7 @@ footer {
     padding: 1rem 0;
     text-align: center;
     margin-top: 2rem;
+    bottom: 0;
 }
 
 footer nav a:hover {
@@ -241,17 +249,22 @@ footer nav a{
 /* Events section styling */
 #events {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    place-items: center;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 2%;
 }
 
 .event-card {
+    display: flex;
+    flex-direction: column;
     background-color: white;
-    padding: 1.5rem;
+    padding: 0px;
     border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .event-card:hover {
@@ -262,15 +275,35 @@ footer nav a{
 
 .event-card img {
     width: 100%;
-    height: 150px;  
+    height: 120px;  
     object-fit: cover;  
-    border-radius: 8px;
-    margin-bottom: 0;  
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 1.5%;  
 }
 
 .event-card h3 {
     margin-top: 0%;
     margin-bottom: 2%;
-    line-height: 90%
+    line-height: 90%;
+    font-size: 1.125rem;
 }
 
+.event-card p {
+    margin: 0;
+    padding: 0.1rem;
+    flex: 1;
+}
+
+.event-card .event-date {
+    padding: 0.0;
+    border-top: 1px solid #ddd;
+}
+
+.event-card .event-location {
+    padding: 0.0;
+    border-top: 1px solid #ddd;
+}
+
+* {
+    border: 0px solid red;
+}
