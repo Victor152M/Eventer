@@ -8,11 +8,11 @@ Vasile:
 (alege ce vrei din TODO ori altcv)
 
 TODO:
+- fa pagina sa arate bine pentru telefon (IMPORTANT)
 - rezolva problema: daca imaginile uploadata au acelasi nume (si deci acceasi locatie), nu mai stim pe care dintre imagini sa le folosim pe pagina evenimentului
 - add a navigation bar on all pages of the website
 - adauga o data pentru fiecare eveniment
 - fa pagina de "upload event" sa arate bine
-- make the descriptions not show "..." if the text is short enough (on the home page)
 - change the Event model (add date, location, etc)
 
 
