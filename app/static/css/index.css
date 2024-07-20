@@ -154,7 +154,7 @@ header{
 
 .cities a {
     text-decoration: none;
-    color: black;
+    color: #3f3f3f;
 }
 
 .cities p {
@@ -183,16 +183,42 @@ header{
     }
 }
 /* Hero section */
-.hero_sec {
+.hero {
     height: 200px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
     padding: 35px 0; 
     margin-bottom: 30px;
-    background-color: #b350af;
+    background-color: #3f3f3f;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden; /* Prevent overflow of child elements */
 }
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+}
+
+.hero-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color:#ffd903;
+}
+
+.hero-right img {
+    max-width: 100%; /* Ensure the image does not exceed container width */
+    max-height: 100%; /* Ensure the image does not exceed container height */
+    object-fit: cover; /* Cover ensures the image covers the area while maintaining aspect ratio */
+    border-radius: 10px; /* Optional: Matches the hero container radius */
+}
+
 
 body {
     background-color: white;
@@ -225,6 +251,7 @@ footer {
     text-align: center;
     margin-top: 2rem;
     bottom: 0;
+    height: 2.5rem;
 }
 
 footer nav a:hover {
@@ -252,6 +279,7 @@ footer nav a{
     place-items: center;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
     gap: 2%;
+    margin-top: 5%;
 }
 
 .event-card {
