@@ -3,6 +3,7 @@ from app import app
 from flask import render_template, request, flash, redirect, url_for
 from .models import Event, db
 from werkzeug.utils import secure_filename
+from markupsafe import escape
 
 @app.route("/")
 def index():
@@ -26,6 +27,9 @@ def post_event():
         if image.filename == '':
             flash("No selected file")
             return redirect(request.url)
+
+        #making new lines actually work (for description)
+        description = description.replace('\n', '<br>')
 
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)

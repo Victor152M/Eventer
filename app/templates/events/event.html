@@ -37,7 +37,9 @@
             </div>
 
             <h2>About the Event</h2>
+            {% autoescape false %}
             <p>{{ event.description }}</p>
+            {% endautoescape %}
             <!--<h3>Highlights:</h3>-->
             <!--<p>{{ event.call_to_action }}</p>-->
             <a href="" class="cta-button">Buy Tickets</a>
