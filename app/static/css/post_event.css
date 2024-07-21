@@ -108,6 +108,7 @@ label {
 }
 
 input[type="text"],
+input[type="date"],
 textarea {
     width: 100%;
     padding: 12px;
@@ -118,6 +119,7 @@ textarea {
 }
 
 input[type="text"]:focus,
+input[type="date"]:focus,
 textarea:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -126,6 +128,28 @@ textarea:focus {
 
 input[type="file"] {
     display: none;
+}
+
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: var(--secondary-color);
+    font-size: 16px;
+    padding: 4px;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    color: var(--text-color);
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+    color: var(--secondary-color);
+    padding: 0 4px;
 }
 
 .file-upload-btn {
