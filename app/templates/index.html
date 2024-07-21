@@ -52,7 +52,7 @@
                     filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
                     alt="{{ event.title }}">
                     <h3>{{ event.title }}</h3>
-                    <p class="event-date">Date: June 10, 2024</p>
+                    <p class="event-date">Date: {{ event.date.day }} {{"-"}} {{event.date.month}} {{"-"}} {{event.date.year}}</p>
                     <p class="event-location">Location: Timisoara, Parcul Copiilor</p>
                     <!-- make this description not show "..." if the text is short enough -->
                     <!--<p> event.description[:140] + "..." </p> PS: add 2 curly braces for usage-->

@@ -4,6 +4,7 @@ from flask import render_template, request, flash, redirect, url_for
 from .models import Event, db
 from werkzeug.utils import secure_filename
 from markupsafe import escape
+import datetime
 
 @app.route("/")
 def index():
@@ -22,6 +23,10 @@ def post_event():
         title = request.form["title"]
         description = request.form["description"]
         image = request.files["image"]
+        date = request.form["date"]
+
+        date = [int(x) for x in date.split("-")]
+        date = datetime.date(date[0], date[1], date[2])
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if image.filename == '':
@@ -35,7 +40,7 @@ def post_event():
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-            new_event = Event(title=title, description=description, image=image_path)
+            new_event = Event(title=title, description=description, image=image_path, date=date)
             new_event.saveToDB()
             print("Event added successguly")
             flash("The event was added successfully ;)")
