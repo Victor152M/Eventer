@@ -3,8 +3,20 @@
     src: url('../fonts/Playwrite_BE_VLG/static/PlaywriteBEVLG-Regular.ttf'); 
   }
 
-header {
-    background-color: #4CAF50;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+/* This is a good practice I think, why aren't we using it
+ by default? */
+* {
+    box-sizing: border-box;
+}
+
+header{
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background-color: #ffd903;
     color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     height: auto;
@@ -19,40 +31,19 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    width: 60vw;
     height: 100vh;
-    padding: 5rem 3rem;
-    background-color: #333;
-    color: aliceblue;
+    background-color: #3f3f3f;
+    color: white;
     transform: translate(-5000px);
     transition: transform 0.5s ease;
-    z-index: 4;
-}
-
-.search_bar {
-    display: flex;
-    align-items: center;
-    height: 35px;
-    width: 90%;
-    border: solid 1px white;
-    border-radius: 5px;
-}
-
-.register_button {
-    font-size: 1.3rem;
-    margin: 20px 0 10px 0;
-}
-
-.register_button:hover {
-    font-size: 1.37rem;
-    background-color: brown;
+    z-index: 11;
 }
 
 .navigation_links {
     display: block;
     border-top: solid 1px #e0f7fa;
     border-bottom: solid 1px #e0f7fa;
-    padding: 0;
+    padding: 2.5rem 0;
     margin: 20px 0;
 }
 
@@ -64,7 +55,7 @@ header {
 .event_link a {
     font-size: 1.4rem;
     text-decoration: none;
-    color:aliceblue;
+    color:rgb(255, 255, 255);
 }
 
 .post_event {
@@ -78,18 +69,26 @@ header {
     background-color: brown;
 }
 
+.post_event a:visited {
+    color: #ffffff;
+}
+
+.post_event a{
+    text-decoration: none;
+}
+
 .navbar { 
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 45px;
-    padding: 15px 0;
+    height: 3rem;
+    padding: 40px;
     top: 0;
     position: sticky;
     z-index: 3;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    background-color: #4CAF50;
+    background-color: #ffd903;
 }
 
 .logos {
@@ -102,10 +101,10 @@ header {
 }
 
 .logo_text {
-    padding: 0 0 0 10px;
+    padding: 0px 20px 5px 10px;
     font-size: 1.5rem;
     font-family: 'Playwrite';
-    color:#e0f7fa;
+    color:#3f3f3f;;
     text-decoration: none;
     font-weight: bold;
 }
@@ -134,7 +133,7 @@ header {
 
 .cities a {
     text-decoration: none;
-    color: black;
+    color: #3f3f3f;
 }
 
 .cities p {
@@ -149,7 +148,7 @@ header {
 /*Creating a media-query designed to upgrade the desktop version of the menu */
 @media screen and (min-width: 700px) {
     .menu_active {
-        width: 35vw;
+        width: 10vw;
         height: 100vh;
     }
 
@@ -158,26 +157,62 @@ header {
         justify-content: space-around;
         align-items: center;
         width: 100%;
-        height: 45px;
-        padding: 15px 0;
+        height: 0;
     }
 }
+
 /* Hero section */
-.hero_sec {
-    height: 500px;
+.hero {
+    height: 200px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
     padding: 35px 0; 
-    background-color: #b350af;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    background-color: #3f3f3f;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden; /* Prevent overflow of child elements */
 }
 
+.hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+}
+
+.hero-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color:#ffd903;
+}
+
+.hero-left h2 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 5%;
+}
+
+.hero-right img {
+    max-width: 100%; /* Ensure the image does not exceed container width */
+    max-height: 100%; /* Ensure the image does not exceed container height */
+    object-fit: cover; /* Cover ensures the image covers the area while maintaining aspect ratio */
+    border-radius: 10px; /* Optional: Matches the hero container radius */
+}
+
+
 body {
-    background-color: #ffffff;
-    color: #333;
+    background-color: white;
+    color: #3f3f3f;
     line-height: 1.6;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 body, h1, h2, p {
@@ -187,23 +222,35 @@ body, h1, h2, p {
 }
 
 main {
-    padding: 2rem 1rem;
-    max-width: 1000px;
+    padding-left: 8%;
+    padding-right: 8%;
+    max-width: 100%;
     margin: 0 auto;
+    flex: 1;
 }
 
 footer {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #ffd903;
+    color: #3f3f3f;
     padding: 1rem 0;
     text-align: center;
     margin-top: 2rem;
+    bottom: 0;
+    height: 2.5rem;
 }
 
-footer nav a:hover {
-    text-decoration: underline;
+footer nav {
+    color: #3f3f3f;
+    background-color: #ffd903;
 }
 
+footer nav a:visited{
+    color: #3f3f3f;
+}
+
+footer nav a{
+    text-decoration: none;
+}
 
 /* we use # for ids apparently */
 /* we use . for classes */
@@ -211,17 +258,23 @@ footer nav a:hover {
 /* Events section styling */
 #events {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    place-items: center;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 2%;
+    margin-top: 5%;
 }
 
 .event-card {
+    display: flex;
+    flex-direction: column;
     background-color: white;
-    padding: 1.5rem;
+    padding: 0px;
     border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .event-card:hover {
@@ -232,11 +285,35 @@ footer nav a:hover {
 
 .event-card img {
     width: 100%;
-    height: 150px;  
+    height: 120px;  
     object-fit: cover;  
-    border-radius: 5px;
-    margin-bottom: 10px;  
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 1.5%;  
 }
 
+.event-card h3 {
+    margin-top: 0%;
+    margin-bottom: 2%;
+    line-height: 90%;
+    font-size: 1.125rem;
+}
 
-    
+.event-card p {
+    margin: 0;
+    padding: 0.1rem;
+    flex: 1;
+}
+
+.event-card .event-date {
+    padding: 0.0;
+    border-top: 1px solid #ddd;
+}
+
+.event-card .event-location {
+    padding: 0.0;
+    border-top: 1px solid #ddd;
+}
+
+* {
+    border: 0px solid red;
+}

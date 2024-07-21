@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }}</title>
+    <link rel="icon" href="../static/images/logo.png"/>
+    <link rel="stylesheet" href="../static/css/event.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logos">
+                <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
+                <a href="/" class="logo_text">Eventer</a>
+            </div>
+            <div class="cities">
+                <a href="#"><img class="city_icon" src="../static/images/city.png" alt="rooro"></a>
+                <a href="#"><p>Cities</p></a>
+            </div>
+            <div class="menu">
+                <img id="menu__opener" onclick="menuDictating()" class="hamburger_menu" src="../static/images/hamburger_menu.png" alt="error img">
+                <img id="menu__closer" onclick="menuDictating()" class="x_button" src="../static/images/close.png" alt="error img">
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="menu__body" class="menu_active">
+            <ul class="navigation_links">
+                <li class="event_link"><a href="#">Home</a></li>
+                <li class="event_link"><a href="#">Events</a></li>
+                <li class="event_link"><a href="#">Cities</a></li>
+                <li class="event_link"><a href="#">Dates</a></li>
+                <li class="event_link"><a href="#">Contact</a></li>
+            </ul>
+            <div class="post_event">
+                <a href="/post_event">Post an event</a>
+            </div>
+        </div>
+        <h1>{{ event.title }}</h1>
+        <img src="{{ url_for('static', 
+        filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
+        alt="{{ event.title }}" class="event-image">
+        <div class="event-details">
+            <div class="date-location">
+                <span class="date">{{ event.date }}</span>
+                <!--<span class="location">{{ event.location }}</span>-->
+            </div>
+            <h2>About the Event</h2>
+            {% autoescape false %}
+            <p>{{ event.description }}</p>
+            {% endautoescape %}
+            <!--<h3>Highlights:</h3>-->
+            <!--<p>{{ event.call_to_action }}</p>-->
+            <a href="" class="cta-button">Buy Tickets</a>
+        </div>
+    </main>
+    <script src="../static/js/navbar.js"></script>
+</body>
+</html>

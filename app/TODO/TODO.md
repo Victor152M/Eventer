@@ -1,16 +1,25 @@
 In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 
 Victor:
-- lucrez o pagina pentru postarea evenimentelor
+# Pagina pentru postarea evenimentelor
+- adauga o data pentru fiecare eveniment
 
-Vasi:
-- things to do: - lucrez la pagina fiecarui eveniment
+Vasile:
+(alege ce vrei din TODO ori altcv)
 
 TODO:
-- things to do
+- fa pagina sa arate bine pentru telefon (IMPORTANT)
+- fa pagina de index sa arate bine
+- rezolva problema: daca imaginile uploadata au acelasi nume (si deci acceasi locatie), nu mai stim pe care dintre imagini sa le folosim pe pagina evenimentului
+- add a navigation bar on all pages of the website
+- fa pagina de "upload event" sa arate bine
+- change the Event model (add date, location, etc)
 
+
+(Adaugam ce am facut fiecare)
 Things that are done:
-- thing done (by Vasi)
-- thing done (by Victor)
+- evenimentele pot fi incarcate si salvate in database (by Victor)
+- genereaza pagini web din evenimentele din baza de date (by Victor)
+- make the home page properly display events (by Victor)
 
 
