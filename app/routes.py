@@ -25,8 +25,10 @@ def post_event():
         image = request.files["image"]
         date = request.form["date"]
 
+        #preprocessing the date for uploading to the database
         date = [int(x) for x in date.split("-")]
         date = datetime.date(date[0], date[1], date[2])
+        
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if image.filename == '':
