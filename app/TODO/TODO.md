@@ -1,6 +1,7 @@
 In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 
 Victor:
+- change the Event model (add location, etc)
 
 Vasile:
 # fa pagina sa arate bine pentru telefon (IMPORTANT)
@@ -10,9 +11,9 @@ TODO:
 - rezolva problema: daca imaginile uploadata au acelasi nume (si deci acceasi locatie), nu mai stim pe care dintre imagini sa le folosim pe pagina evenimentului
 - add a navigation bar on all pages of the website
 - fa pagina de "upload event" sa arate bine
-- change the Event model (add location, etc)
 - make the images display properly on the pages of the events
 - make the event cards display the months by name
+- make a login page with secure, encrypted logins
 
 
 (Adaugam ce am facut fiecare)
