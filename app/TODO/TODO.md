@@ -11,6 +11,8 @@ TODO:
 - add a navigation bar on all pages of the website
 - fa pagina de "upload event" sa arate bine
 - change the Event model (add location, etc)
+- make the images display properly on the pages of the events
+- make the event cards display the months by name
 
 
 (Adaugam ce am facut fiecare)
