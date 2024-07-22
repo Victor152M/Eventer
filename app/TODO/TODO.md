@@ -25,5 +25,3 @@ Things that are done:
 - adauga o data pentru fiecare eveniment 
 - change the Event model (add location, etc)
 - make a registration page 
-
-
