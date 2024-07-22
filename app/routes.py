@@ -25,10 +25,13 @@ def post_event():
         image = request.files["image"]
         date = request.form["date"]
 
-        #preprocessing the date for uploading to the database
-        date = [int(x) for x in date.split("-")]
-        date = datetime.date(date[0], date[1], date[2])
-        
+        #gettting location data
+        country = request.form.get("country")
+        city = request.form.get("city")
+        venue = request.form.get("venue")
+
+        location = country + ", " + city + ", " + venue 
+
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if image.filename == '':
@@ -38,11 +41,15 @@ def post_event():
         #making new lines actually work (for description)
         description = description.replace('\n', '<br>')
 
+        #preprocessing the date for uploading to the database
+        date = [int(x) for x in date.split("-")]
+        date = datetime.date(date[0], date[1], date[2])
+
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-            new_event = Event(title=title, description=description, image=image_path, date=date)
+            new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
             new_event.saveToDB()
             print("Event added successguly")
             flash("The event was added successfully ;)")
