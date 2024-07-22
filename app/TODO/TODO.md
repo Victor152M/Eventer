@@ -1,7 +1,7 @@
 In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 
 Victor:
-- change the Event model (add location, etc)
+- make a login page with secure, encrypted logins
 
 Vasile:
 # fa pagina sa arate bine pentru telefon (IMPORTANT)
@@ -13,7 +13,6 @@ TODO:
 - fa pagina de "upload event" sa arate bine
 - make the images display properly on the pages of the events
 - make the event cards display the months by name
-- make a login page with secure, encrypted logins
 
 
 (Adaugam ce am facut fiecare)
@@ -23,6 +22,6 @@ Things that are done:
 - pagina pentru postarea evenimentelor
 - make the home page properly display events 
 - adauga o data pentru fiecare eveniment 
-
+- change the Event model (add location, etc)
 
 
