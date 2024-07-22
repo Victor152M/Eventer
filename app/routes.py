@@ -1,10 +1,29 @@
 import os
+import datetime
 from app import app
 from flask import render_template, request, flash, redirect, url_for
 from .models import Event, db
 from werkzeug.utils import secure_filename
 from markupsafe import escape
-import datetime
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length, ValidationError
+
+class RegisterForm(FlaskForm):
+    username = StringField(validators=[InputRequired(), Length(min=4, max=20)],
+    render_kw = {"placehloder": "Username"})
+
+    password = PasswordField(validators=[InputRequired(), Length(min=4, max=20)],
+    render_kw = {"placehloder": "Password"})
+
+    submit = SubmitField("Register")
+
+    def validate_username(self, username):
+        existing_username = User.query.filter_by(username=username.data).first()
+        if existing_username:
+            raise ValidationError(
+                "The username already exists. Please chose a different one.")
+
 
 @app.route("/")
 def index():
@@ -62,6 +81,11 @@ def post_event():
 def get_event(event_id):
     event = Event.query.get(event_id)
     return render_template("events/event.html", event=event)
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    form = RegisterForm()
+    return render_template("register.html", form=form)
 
 @app.route("/db_entries")
 def db_entries():

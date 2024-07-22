@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 
 #The db is initialized in __init__.py
 db = SQLAlchemy()
@@ -27,5 +28,10 @@ class Event(db.Model):
         db.session.delete(self)
         db.session.commit()
     
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(36), nullable=False, unique=True)
+    password = db.Column(db.String(80), nullable=False)
+
     
 
