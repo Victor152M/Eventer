@@ -13,6 +13,7 @@ TODO:
 - fa pagina de "upload event" sa arate bine
 - make the images display properly on the pages of the events
 - make the event cards display the months by name
+- make the registration page look nice
 
 
 (Adaugam ce am facut fiecare)
@@ -23,5 +24,6 @@ Things that are done:
 - make the home page properly display events 
 - adauga o data pentru fiecare eveniment 
 - change the Event model (add location, etc)
+- make a registration page 
 
 
