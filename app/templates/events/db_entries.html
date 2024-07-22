@@ -26,6 +26,20 @@
             </tr>
             {% endfor %}
         </table>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Hashed Password</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.password_hash }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </main>
 </body>
 </html>

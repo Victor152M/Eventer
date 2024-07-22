@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 #The db is initialized in __init__.py
@@ -29,9 +30,25 @@ class Event(db.Model):
         db.session.commit()
     
 class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(36), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
+    id = db.Column("id", db.Integer, primary_key=True)
+    username = db.Column("username", db.String(40), nullable=False, unique=True)
+    password_hash = db.Column("password_hash", db.String(120), nullable=False)
 
+    def __init__(self, username):
+        self.username = username
+
+    def set_password(self, password):
+        self.password_hash = password
+
+    #def check_password(self, password):
+    #    return check_password_hash(self.password_hash, password)
+
+    def saveToDB(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    def deleteFromDB(self):
+        db.session.delete(self)
+        db.session.commit()
     
 

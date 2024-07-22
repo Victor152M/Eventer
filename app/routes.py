@@ -1,28 +1,11 @@
 import os
 import datetime
 from app import app
-from flask import render_template, request, flash, redirect, url_for
-from .models import Event, db
+from flask import render_template, request, flash, redirect, url_for, jsonify
+from .models import Event, User, db
 from werkzeug.utils import secure_filename
-from markupsafe import escape
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError
-
-class RegisterForm(FlaskForm):
-    username = StringField(validators=[InputRequired(), Length(min=4, max=20)],
-    render_kw = {"placehloder": "Username"})
-
-    password = PasswordField(validators=[InputRequired(), Length(min=4, max=20)],
-    render_kw = {"placehloder": "Password"})
-
-    submit = SubmitField("Register")
-
-    def validate_username(self, username):
-        existing_username = User.query.filter_by(username=username.data).first()
-        if existing_username:
-            raise ValidationError(
-                "The username already exists. Please chose a different one.")
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from passlib.hash import sha256_crypt
 
 
 @app.route("/")
@@ -84,13 +67,30 @@ def get_event(event_id):
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    form = RegisterForm()
-    return render_template("register.html", form=form)
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if User.query.filter_by(username=username).first():
+            return jsonify({"success": False, "message": "Username already exists"})
+        
+        new_user = User(username=username)
+        new_user.set_password(sha256_crypt.encrypt(password))
+        new_user.saveToDB()
+
+        return jsonify({"success": True, "message": "Registration successful", "redirect": url_for("login")})
+
+    return render_template("register.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 @app.route("/db_entries")
 def db_entries():
     events = db.session.query(Event)
-    return render_template("events/db_entries.html", events=events)
+    users = db.session.query(User)
+    return render_template("events/db_entries.html", events=events, users=users)
 
 ### helper functions ###
 def allowed_file(filename):
