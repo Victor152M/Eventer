@@ -54,7 +54,7 @@ def post_event():
             new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
             new_event.saveToDB()
             print("Event added successguly")
-            flash("The event was added successfully ;)")
+            flash("The event was added successfully")
             return redirect(url_for("index"))
         else:
             flash('Invalid file type. Please upload an image.')
@@ -68,14 +68,16 @@ def get_event(event_id):
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        email = request.form.get("email")
+        password_hash = sha256_crypt.encrypt(request.form.get("password"))
 
-        if User.query.filter_by(username=username).first():
-            return jsonify({"success": False, "message": "Username already exists"})
+        if User.query.filter_by(email=email).first():
+            return jsonify({"success": False, "message": "Email already exists"})
         
-        new_user = User(username=username)
-        new_user.set_password(sha256_crypt.encrypt(password))
+        new_user = User(first_name=first_name, last_name=last_name, email=email)
+        new_user.set_password(password_hash)
         new_user.saveToDB()
 
         return jsonify({"success": True, "message": "Registration successful", "redirect": url_for("login")})
@@ -84,7 +86,15 @@ def register():
 
 @app.route("/login")
 def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
     return render_template("login.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
 
 @app.route("/db_entries")
 def db_entries():

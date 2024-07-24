@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from passlib.hash import sha256_crypt
 
 #The db is initialized in __init__.py
 db = SQLAlchemy()
@@ -31,7 +32,9 @@ class Event(db.Model):
     
 class User(db.Model, UserMixin):
     id = db.Column("id", db.Integer, primary_key=True)
-    username = db.Column("username", db.String(40), nullable=False, unique=True)
+    first_name = db.Column("first_name", db.String(40), nullable=False, unique=False)
+    last_name = db.Column("last_name", db.String(40), nullable=False, unique=False)
+    email = db.Column("email", db.String(320), nullable=False, unique=True)
     password_hash = db.Column("password_hash", db.String(120), nullable=False)
 
     def __init__(self, username):
@@ -40,8 +43,8 @@ class User(db.Model, UserMixin):
     def set_password(self, password):
         self.password_hash = password
 
-    #def check_password(self, password):
-    #    return check_password_hash(self.password_hash, password)
+    def check_password(self, password):
+        return sha256_crypt.verify(password, self.password_hash)
 
     def saveToDB(self):
         db.session.add(self)
