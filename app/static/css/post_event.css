@@ -192,8 +192,47 @@ textarea {
     box-shadow: 0 4px 10px rgba(245, 0, 87, 0.3);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .container {
         border-radius: 0;
+    }
+}
+
+.location-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.location-selector select,
+.location-selector input[type="text"] {
+    flex: 1 1 200px;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 20px auto;
+}
+
+.location-selector select:focus,
+.location-selector input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.location-selector input[type="text"] {
+    flex: 1 1 100%;
+}
+
+@media (max-width: 600px) {
+    .location-selector select,
+    .location-selector input[type="text"] {
+        flex: 1 1 100%;
     }
 }

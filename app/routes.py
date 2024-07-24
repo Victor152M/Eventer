@@ -1,10 +1,12 @@
 import os
-from app import app
-from flask import render_template, request, flash, redirect, url_for
-from .models import Event, db
-from werkzeug.utils import secure_filename
-from markupsafe import escape
 import datetime
+from app import app
+from flask import render_template, request, flash, redirect, url_for, jsonify
+from .models import Event, User, db
+from werkzeug.utils import secure_filename
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from passlib.hash import sha256_crypt
+
 
 @app.route("/")
 def index():
@@ -25,8 +27,13 @@ def post_event():
         image = request.files["image"]
         date = request.form["date"]
 
-        date = [int(x) for x in date.split("-")]
-        date = datetime.date(date[0], date[1], date[2])
+        #gettting location data
+        country = request.form.get("country")
+        city = request.form.get("city")
+        venue = request.form.get("venue")
+
+        location = country + ", " + city + ", " + venue 
+
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if image.filename == '':
@@ -36,14 +43,18 @@ def post_event():
         #making new lines actually work (for description)
         description = description.replace('\n', '<br>')
 
+        #preprocessing the date for uploading to the database
+        date = [int(x) for x in date.split("-")]
+        date = datetime.date(date[0], date[1], date[2])
+
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-            new_event = Event(title=title, description=description, image=image_path, date=date)
+            new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
             new_event.saveToDB()
             print("Event added successguly")
-            flash("The event was added successfully ;)")
+            flash("The event was added successfully")
             return redirect(url_for("index"))
         else:
             flash('Invalid file type. Please upload an image.')
@@ -54,10 +65,42 @@ def get_event(event_id):
     event = Event.query.get(event_id)
     return render_template("events/event.html", event=event)
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        email = request.form.get("email")
+        password_hash = sha256_crypt.encrypt(request.form.get("password"))
+
+        if User.query.filter_by(email=email).first():
+            return jsonify({"success": False, "message": "Email already exists"})
+        
+        new_user = User(first_name=first_name, last_name=last_name, email=email)
+        new_user.set_password(password_hash)
+        new_user.saveToDB()
+
+        return jsonify({"success": True, "message": "Registration successful", "redirect": url_for("login")})
+
+    return render_template("register.html")
+
+@app.route("/login")
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+    return render_template("login.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
 @app.route("/db_entries")
 def db_entries():
     events = db.session.query(Event)
-    return render_template("events/db_entries.html", events=events)
+    users = db.session.query(User)
+    return render_template("events/db_entries.html", events=events, users=users)
 
 ### helper functions ###
 def allowed_file(filename):

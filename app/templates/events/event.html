@@ -44,8 +44,8 @@
         alt="{{ event.title }}" class="event-image">
         <div class="event-details">
             <div class="date-location">
-                <span class="date">{{ event.date }}</span>
-                <!--<span class="location">{{ event.location }}</span>-->
+                <span class="date"> {{ event.date }} </span>
+                <span class="location"> {{ event.location }} </span>
             </div>
             <h2>About the Event</h2>
             {% autoescape false %}
@@ -53,7 +53,7 @@
             {% endautoescape %}
             <!--<h3>Highlights:</h3>-->
             <!--<p>{{ event.call_to_action }}</p>-->
-            <a href="" class="cta-button">Buy Tickets</a>
+            <!--<a href="" class="cta-button">Buy Tickets</a>-->
         </div>
     </main>
     <script src="../../static/js/scripts.js"></script>
