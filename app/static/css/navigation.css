@@ -32,6 +32,7 @@
 .logos {
     display: flex;
     align-items: center;
+    margin-left: 25px;
 }
 
 .logo_img {
