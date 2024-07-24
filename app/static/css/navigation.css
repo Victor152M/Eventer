@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'Playwrite';
+    src: url('../fonts/Playwrite_BE_VLG/static/PlaywriteBEVLG-Regular.ttf'); 
+  }
+
+.navbar { 
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 55px;
+    padding: 15px 0;
+    top: 0;
+    position: sticky;
+    z-index: 3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffd903;
+}
+
+.group_nav {
+    display: inline;
+}
+
+.burger {
+    margin-left: 20px;
+}
+
+.burger img {
+    width: 25px;
+}
+
+.logos {
+    display: flex;
+    align-items: center;
+}
+
+.logo_img {
+    width: 45px;
+}
+
+.logo_text {
+    padding: 0px 20px 5px 10px;
+    font-size: 1.5rem;
+    font-family: 'Playwrite';
+    color:#3f3f3f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*Left side navigation links*/
+.side_nav {
+    position: fixed;
+    height: 100%;
+    width: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 55;
+    background-color: #ffd903;
+    color: #3f3f3f;
+}
+
+.home {
+    margin-top: 35px;;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color:#3f3f3f;  
+}
+
+.home img {
+    width: 25px;
+}
+
+.home p {
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+}
+
+.post_event { 
+    margin-top: 35px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color:#3f3f3f;
+}
+
+.post_event img {
+    width: 25px;
+}
+
+.post_event p {
+    font-size: 13px;
+}
+
+.account {
+    margin-top: 35px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color:#3f3f3f;
+}
+
+.account img {
+    width: 25px;
+}
+
+.account p {
+    font-size: 13px;
+}
+
+.contact {
+    margin-top: 35px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color:#3f3f3f;
+}
+
+.contact img {
+    width: 25px;
+}
+
+.contact p {
+    font-size: 13px;
+}

@@ -1,6 +1,6 @@
 // Turns the hamburger menu into a X after pressing it and opens the menu
 // from the left, and then undoing everything if pressed 2nd time
-let changer = true;
+// let changer = true;
 function menuDictating() {
     var menu_active = document.getElementById("menu__body"); 
     var menu_opener = document.getElementById("menu__opener");
@@ -16,3 +16,5 @@ function menuDictating() {
     }
     changer = !changer;
 }
+
+let changer = true;

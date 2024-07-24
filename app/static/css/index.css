@@ -23,143 +23,6 @@ header{
     width: 100%;
     display: block;
 }
-/* Navbar and menu*/
-/*By default, the menu is created for the mobile version of the website*/
-.menu_active {
-    top: 0;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    height: 100vh;
-    background-color: #3f3f3f;
-    color: white;
-    transform: translate(-5000px);
-    transition: transform 0.5s ease;
-    z-index: 11;
-}
-
-.navigation_links {
-    display: block;
-    border-top: solid 1px #e0f7fa;
-    border-bottom: solid 1px #e0f7fa;
-    padding: 2.5rem 0;
-    margin: 20px 0;
-}
-
-.event_link {
-    list-style: none;
-    padding: 1rem 0;
-}
-
-.event_link a {
-    font-size: 1.4rem;
-    text-decoration: none;
-    color:rgb(255, 255, 255);
-}
-
-.post_event {
-    margin: 10px 0;
-    font-size: 1.3rem;
-}
-
-.post_event:hover {
-    cursor: pointer;
-    font-size: 1.37rem;
-    background-color: brown;
-}
-
-.post_event a:visited {
-    color: #ffffff;
-}
-
-.post_event a{
-    text-decoration: none;
-}
-
-.navbar { 
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 3rem;
-    padding: 40px;
-    top: 0;
-    position: sticky;
-    z-index: 3;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    background-color: #ffd903;
-}
-
-.logos {
-    display: flex;
-    align-items: center;
-}
-
-.logo_img {
-    width: 45px;
-}
-
-.logo_text {
-    padding: 0px 20px 5px 10px;
-    font-size: 1.5rem;
-    font-family: 'Playwrite';
-    color:#3f3f3f;;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.menu {
-    display: flex;
-}
-
-.hamburger_menu {
-    display: flex;
-    width: 45px;
-    cursor: pointer;
-}
-
-.x_button {
-    display: none;
-    width: 45px;
-    cursor: pointer;
-}
-
-.cities {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cities a {
-    text-decoration: none;
-    color: #3f3f3f;
-}
-
-.cities p {
-    padding: 0 0 0 15px;
-    font-size: 1.1rem;
-}
-
-.city_icon {
-    width: 35px;
-}
-
-/*Creating a media-query designed to upgrade the desktop version of the menu */
-@media screen and (min-width: 700px) {
-    .menu_active {
-        width: 10vw;
-        height: 100vh;
-    }
-
-    .navbar { 
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        height: 0;
-    }
-}
 
 /* Hero section */
 .hero {
@@ -222,11 +85,16 @@ body, h1, h2, p {
 }
 
 main {
+    max-width: 100%;
+    margin: 0 0;
+    flex: 1;
+    display: flex;
+}
+
+.main_content {
     padding-left: 8%;
     padding-right: 8%;
-    max-width: 100%;
-    margin: 0 auto;
-    flex: 1;
+    display: block;
 }
 
 footer {
@@ -257,6 +125,7 @@ footer nav a{
 
 /* Events section styling */
 #events {
+    border: solid 1px red;
     display: grid;
     place-items: center;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
