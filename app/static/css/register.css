@@ -28,15 +28,47 @@ input {
 }
 
 button {
-    background-color: #007bff;
-    color: white;
+    background-color: #ffd903;
+    color: #3f3f3f;
     border: none;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
+button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  button:hover::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    border-radius: 4px;
+  }
+
+  button:hover {
+    color: #ffd903;
+    background-color: #3f3f3f;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+  }
+
+  button span {
+    position: relative;
+    z-index: 1;
+  }
