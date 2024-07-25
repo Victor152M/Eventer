@@ -9,26 +9,20 @@
     <link rel="stylesheet" href="../static/css/navigation.css">
 </head>
 <body id="body">
-    <!--
-    <div class="post_event">
-        <a href="/post_event">Post your event!</a>
-    </div>
-    -->
     <header>
-        <div class="group_nav">
-            <nav class="navbar">
-                <div class="burger">
-                    <img src="../static/images/hamburger_menu.png" alt="ftlp">
-                </div>
-                <div class="logos">
-                    <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
-                    <a href="/" class="logo_text">Eventer</a>
-                </div>
-            </nav>
-        </div>
+        <nav class="navbar">
+            <div class="menu_activation">
+                <img onclick="iconChanger(); menuOpener();" id="open" class="burger" src="../static/images/hamburger_menu.png" alt="ftlp">
+                <img onclick="iconChanger(); menuOpener();" id="close" class="close" src="../static/images/close.png" alt="ftlp">
+            </div>
+            <div class="logos">
+                <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
+                <a href="/" class="logo_text">Eventer</a>
+            </div>
+        </nav>
     </header>
     <main>
-        <sidenav class="side_nav">
+        <sidenav id="side__nav" class="side_nav">
             <a href="#" class="home">
                 <img src="../static/images/house2.png" alt="ftlp">
                 <p>Home</p>
@@ -46,7 +40,7 @@
                 <P>Contact</P>
             </a>
         </sidenav>
-        <div class="main_content">
+        <div id="content" class="main_content">
             <section class="hero">
                 <div class="hero-left">
                     <h2>Discover the best events in Timisoara!</h2>

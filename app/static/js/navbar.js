@@ -1,20 +1,30 @@
 // Turns the hamburger menu into a X after pressing it and opens the menu
 // from the left, and then undoing everything if pressed 2nd time
-// let changer = true;
-function menuDictating() {
-    var menu_active = document.getElementById("menu__body"); 
-    var menu_opener = document.getElementById("menu__opener");
-    var menu_closer = document.getElementById("menu__closer");
-    if (changer) {
-        menu_active.style.transform = 'translate(0)';
+
+let icon_changer = true;
+function iconChanger() {
+    var menu_opener = document.getElementById("open");
+    var menu_closer = document.getElementById("close");
+    if (icon_changer) {
         menu_opener.style.display = 'none';
-        menu_closer.style.display = 'flex';
+        menu_closer.style.display = 'flex'; 
     } else {
-        menu_active.style.transform = 'translate(-5000px)';
         menu_opener.style.display = 'flex';
-        menu_closer.style.display = 'none';
+        menu_closer.style.display = 'none'; 
     }
-    changer = !changer;
+    icon_changer = !icon_changer;
 }
 
-let changer = true;
+let menu_opener = true;
+function menuOpener() {
+    var side_nav = document.getElementById("side__nav");
+    var content = document.getElementById("content");
+    if (menu_opener) {
+        side_nav.style.width = '200px';
+        content.style.margin = '200px';
+    } else {
+        side_nav.style.width = '65px';
+        content.style.margin = '65px';
+    }
+    menu_opener = !menu_opener;
+}

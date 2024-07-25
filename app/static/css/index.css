@@ -92,9 +92,10 @@ main {
 }
 
 .main_content {
-    padding-left: 8%;
-    padding-right: 8%;
+    border: solid 1px black;
     display: block;
+    margin-left: 65px;
+    padding: 0 60px; 
 }
 
 footer {

@@ -21,12 +21,20 @@
     display: inline;
 }
 
-.burger {
+.menu_activation {
     margin-left: 20px;
 }
 
-.burger img {
+.burger {
     width: 25px;
+    display: flex;
+    cursor: pointer;
+}
+
+.close {
+    width: 25px;
+    display: none;
+    cursor: pointer;
 }
 
 .logos {
