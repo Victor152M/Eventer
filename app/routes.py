@@ -75,8 +75,8 @@ def post_event():
 
 @app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
-    event = db_operation(f"SELECT * FROM events WHERE id = {event_id};")
-    print(event)
+    event = db_operation(f"SELECT * FROM events WHERE id = {event_id};", fetch=True)
+    # why does it not work to render it in jinja2?
     return render_template("events/event.html", event=event)
 
 @app.route("/register", methods=["GET", "POST"])
