@@ -12,9 +12,11 @@ from passlib.hash import sha256_crypt
 @app.route("/")
 def index():
     events = db_operation("SELECT * FROM events;", fetch=True)
-    print(events)
+    links = []
+    for event in events:
+        links.append("/events/event" + str(event[0]))
     if events:
-        return render_template("index.html", events=events)
+        return render_template("index.html", events=events, links=links)
     return render_template("index.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
@@ -74,6 +76,7 @@ def post_event():
 @app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
     event = db_operation(f"SELECT * FROM events WHERE id = {event_id};")
+    print(event)
     return render_template("events/event.html", event=event)
 
 @app.route("/register", methods=["GET", "POST"])

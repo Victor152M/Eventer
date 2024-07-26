@@ -38,18 +38,18 @@
                 <a href="/post_event">Post an event</a>
             </div>
         </div>
-        <h1>{{ event.title }}</h1>
+        <h1>{{ event[1] }}</h1>
         <img src="{{ url_for('static', 
         filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
-        alt="{{ event.title }}" class="event-image">
+        alt="{{ event[1] }}" class="event-image">
         <div class="event-details">
             <div class="date-location">
-                <span class="date"> {{ event.date }} </span>
-                <span class="location"> {{ event.location }} </span>
+                <span class="date"> {{ event[5] }} </span>
+                <span class="location"> {{ event[6] }} </span>
             </div>
             <h2>About the Event</h2>
             {% autoescape false %}
-            <p>{{ event.description }}</p>
+            <p>{{ event[2] }}</p>
             {% endautoescape %}
             <!--<h3>Highlights:</h3>-->
             <!--<p>{{ event.call_to_action }}</p>-->
