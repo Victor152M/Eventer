@@ -1,0 +1,5 @@
+postgresql_database: "Eventer"
+postgresql_user: "postgres"
+postgresql_password: ""
+postgresql_host: ""
+postgresql_port: "5432"

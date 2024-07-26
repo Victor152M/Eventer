@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events Home Page</title>
+    <title>Eventer Home</title>
     <link rel="icon" href="../static/images/logo.png"/>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/navigation.css">
@@ -49,7 +49,8 @@
         <div class="main_content">
             <section class="hero">
                 <div class="hero-left">
-                    <h2>Discover the best events in Timisoara!</h2>
+                    <h2>Descoperă cele mai faine evenimente din Timișoara!</h2>
+                    <button class="cta-button">Găsește-mi un eveniment</button>
                 </div>
                 <div class="hero-right">
                     <img src="../static/images/hero.jpg">
@@ -57,13 +58,13 @@
             </section>
             <section id="events">
                 {% for event in events %}
-                    <article class="event-card" data-article="{{ url_for('get_event', event_id=event.id) }}">
+                    <article class="event-card" data-article="{{ event[0] }}">
                         <img src="{{ url_for('static', 
-                        filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
-                        alt="{{ event.title }}">
-                        <h3>{{ event.title }}</h3>
-                        <p clasx`s="event-date">Date: {{ event.date.day }} {{"-"}} {{event.date.month}} {{"-"}} {{event.date.year}}</p>
-                        <p class="event-location">Location: Timisoara, Parcul Copiilor</p>
+                        filename=event[3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                        alt="{{ event[1] }}">
+                        <h3>{{ event[1] }}</h3>
+                        <p clasx`s="event-date">Date: {{ event[4] }} </p>
+                        <p class="event-location">{{ event[5] }}</p>
                         <!-- make this description not show "..." if the text is short enough -->
                         <!--<p> event.description[:140] + "..." </p> PS: add 2 curly braces for usage-->
                     </article>

@@ -3,6 +3,7 @@ In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 Victor:
 - make a login page with secure, encrypted logins
 
+
 Vasile:
 # fa pagina sa arate bine pentru telefon (IMPORTANT)
 - fa pagina de index sa arate bine
@@ -14,6 +15,7 @@ TODO:
 - make the images display properly on the pages of the events
 - make the event cards display the months by name
 - make the registration page look nice
+# probably vulnerable to sql injections - FIX THIS (IMPORTANT)
 
 
 (Adaugam ce am facut fiecare)

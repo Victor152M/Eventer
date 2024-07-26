@@ -1,6 +1,7 @@
 import os
 import datetime
 from app import app
+from .database import db_operation
 from flask import render_template, request, flash, redirect, url_for, jsonify
 from .models import Event, User, db
 from werkzeug.utils import secure_filename
@@ -10,8 +11,11 @@ from passlib.hash import sha256_crypt
 
 @app.route("/")
 def index():
-    events = db.session.query(Event)
-    return render_template("index.html", events=events)
+    events = db_operation("SELECT * FROM events;", fetch=True)
+    print(events)
+    if events:
+        return render_template("index.html", events=events)
+    return render_template("index.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
 def post_event():
@@ -45,14 +49,21 @@ def post_event():
 
         #preprocessing the date for uploading to the database
         date = [int(x) for x in date.split("-")]
-        date = datetime.date(date[0], date[1], date[2])
+        date = f"{date[2]}-{date[1]}-{date[0]}"
 
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-            new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
-            new_event.saveToDB()
+            #new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
+            #new_event.saveToDB()
+
+            sql = f"""
+            INSERT INTO events (title, description, image_filepath, date, location)
+            VALUES ('{title}', '{description}', '{image_path}', '{date}', '{location}');
+            """
+
+            db_operation(sql=sql)
             print("Event added successguly")
             flash("The event was added successfully")
             return redirect(url_for("index"))
@@ -62,7 +73,7 @@ def post_event():
 
 @app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
-    event = Event.query.get(event_id)
+    event = db_operation(f"SELECT * FROM events WHERE id = {event_id};")
     return render_template("events/event.html", event=event)
 
 @app.route("/register", methods=["GET", "POST"])
@@ -100,8 +111,8 @@ def page_not_found(e):
 
 @app.route("/db_entries")
 def db_entries():
-    events = db.session.query(Event)
-    users = db.session.query(User)
+    events = db_operation("SELECT * FROM events;")
+    users = db_operation("SELECT * FROM users;")
     return render_template("events/db_entries.html", events=events, users=users)
 
 ### helper functions ###
