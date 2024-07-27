@@ -1,11 +1,8 @@
-import os
-import datetime
+import datetime, os
 from app import app
 from .database import db_operation
 from flask import render_template, request, flash, redirect, url_for, jsonify
-from .models import Event, User, db
 from werkzeug.utils import secure_filename
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from passlib.hash import sha256_crypt
 
 
@@ -87,12 +84,15 @@ def register():
         email = request.form.get("email")
         password_hash = sha256_crypt.encrypt(request.form.get("password"))
 
-        if User.query.filter_by(email=email).first():
+        if db_operation(f"SELECT * FROM users WHERE email = '{email}'", fetch=True):
             return jsonify({"success": False, "message": "Email already exists"})
-        
-        new_user = User(first_name=first_name, last_name=last_name, email=email)
-        new_user.set_password(password_hash)
-        new_user.saveToDB()
+
+        sql = f"""
+            INSERT INTO users (first_name, last_name, email, password_hash)
+            VALUES ('{first_name}', '{last_name}', '{email}', '{password_hash}');
+            """
+
+        db_operation(sql=sql)
 
         return jsonify({"success": True, "message": "Registration successful", "redirect": url_for("login")})
 
@@ -103,7 +103,7 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
 
-        if not User.query.filter_by(email=email).first():
+        if not db_operation("SELECT * FROM users WHERE email = %s", params=email, fetch=True):
             return jsonify({"success": False, "message": "User doesn't exist"})
 
     return render_template("login.html")

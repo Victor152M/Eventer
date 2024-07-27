@@ -1,11 +1,11 @@
 import psycopg2
 import yaml
 
-def db_operation(sql, fetch=False):
+def db_operation(sql, params=None, fetch=False):
     connection = None
     result = None
     try:
-        with open("app/database_config.yaml", 'r') as f:
+        with open("app/config.yaml", 'r') as f:
             db_config = yaml.load(f, Loader=yaml.SafeLoader)
 
         connection = psycopg2.connect(
@@ -18,11 +18,16 @@ def db_operation(sql, fetch=False):
 
         # Create cursor and execute SQL
         with connection.cursor() as cursor:
-            cursor.execute(sql)
+            if params:
+                cursor.execute(sql, params)
+            else:
+                cursor.execute(sql)
 
             # If fetch is True, fetch the data
             if fetch:
                 result = cursor.fetchall()
+                
+        connection.commit()
     
     except(Exception, psycopg2.Error) as error:
         print (f"Error for database operation:  {error}")
