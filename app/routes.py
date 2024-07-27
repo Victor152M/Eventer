@@ -59,10 +59,13 @@ def post_event():
 
             sql = f"""
             INSERT INTO events (title, description, image_filepath, date, location)
-            VALUES ('{title}', '{description}', '{image_path}', '{date}', '{location}');
+            VALUES (%s, %s, %s, %s, %s);
             """
 
-            db_operation(sql=sql)
+            parameters = (title, description, image_path, date, location)
+
+            db_operation(sql=sql, params=parameters)
+
             print("Event added successguly")
             flash("The event was added successfully")
             return redirect(url_for("index"))
@@ -72,7 +75,9 @@ def post_event():
 
 @app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
-    event = db_operation(f"SELECT * FROM events WHERE id = {event_id};", fetch=True)
+    sql = f"SELECT * FROM events WHERE id = %s;"
+    parameters = event_id
+    event = db_operation(sql=sql, params=event_id, fetch=True)
     # why does it not work to render it in jinja2?
     return render_template("events/event.html", event=event)
 
@@ -84,7 +89,10 @@ def register():
         email = request.form.get("email")
         password_hash = sha256_crypt.encrypt(request.form.get("password"))
 
-        if db_operation(f"SELECT * FROM users WHERE email = '{email}'", fetch=True):
+        sql = f"SELECT * FROM users WHERE email = %s"
+        parameters = (email)
+
+        if db_operations(sql=sql, params=parameters, fetch=True):
             return jsonify({"success": False, "message": "Email already exists"})
 
         sql = f"""
@@ -92,7 +100,9 @@ def register():
             VALUES ('{first_name}', '{last_name}', '{email}', '{password_hash}');
             """
 
-        db_operation(sql=sql)
+        parameters = (first_name, last_name, email, password_hash)
+
+        db_operation(sql=sql, params=parameters)
 
         return jsonify({"success": True, "message": "Registration successful", "redirect": url_for("login")})
 
