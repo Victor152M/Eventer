@@ -1,7 +1,7 @@
 import datetime, os
 from app import app
 from .database import db_operation
-from flask import render_template, request, flash, redirect, url_for, jsonify
+from flask import render_template, request, flash, redirect, url_for, jsonify, session
 from werkzeug.utils import secure_filename
 from passlib.hash import sha256_crypt
 
@@ -76,8 +76,8 @@ def post_event():
 @app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
     sql = f"SELECT * FROM events WHERE id = %s;"
-    parameters = event_id
-    event = db_operation(sql=sql, params=event_id, fetch=True)
+    parameters = str(event_id)
+    event = db_operation(sql=sql, params=parameters, fetch=True)
     # why does it not work to render it in jinja2?
     return render_template("events/event.html", event=event)
 
@@ -112,10 +112,18 @@ def register():
 def login():
     if request.method == "POST":
         email = request.form.get("email")
+        password = request.form.get("password")
 
         if not db_operation("SELECT * FROM users WHERE email = %s", params=email, fetch=True):
             return jsonify({"success": False, "message": "User doesn't exist"})
 
+        password_hash = db_operation("SELECT passowrd_hash FROM users WHERE email = %s", params=email, fetch=True)
+
+        if sha256_crypt.verify(password, password_hash):
+            session['logged_in'] = True
+            first_name = db_operation("SELECT first_name FROM users WHERE email = %s", params=email, fetch=True)
+            session['username'] = first_name
+        
     return render_template("login.html")
 
 @app.errorhandler(404)

@@ -1,5 +1,6 @@
 import psycopg2
 import yaml
+import gc
 
 def db_operation(sql, params=None, fetch=False):
     connection = None
@@ -36,5 +37,7 @@ def db_operation(sql, params=None, fetch=False):
     finally:
         if connection:
             connection.close()
+        # garbage collector
+        gc.collect()
     
     return result
