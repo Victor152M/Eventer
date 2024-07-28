@@ -16,8 +16,8 @@ header{
     position: sticky;
     z-index: 10;
     top: 0;
-    background-color: #ffd903;
-    color: white;
+    background-color: #141414;
+    color: #ababab;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     height: auto;
     width: 100%;
@@ -26,7 +26,7 @@ header{
 
 /* Hero section */
 .hero {
-    height: 200px;
+    height: 20rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -35,7 +35,7 @@ header{
     padding: 35px 0; 
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: #3f3f3f;
+    background-color: #141414;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     overflow: hidden; /* Prevent overflow of child elements */
 }
@@ -69,8 +69,8 @@ header{
 
 
 body {
-    background-color: white;
-    color: #3f3f3f;
+    background-color: #141414;
+    color: #ababab;
     line-height: 1.6;
     margin: 0;
     display: flex;
@@ -99,8 +99,8 @@ main {
 }
 
 footer {
-    background-color: #ffd903;
-    color: #3f3f3f;
+    background-color: #141414;
+    color: #ababab;
     padding: 1rem 0;
     text-align: center;
     margin-top: 2rem;
@@ -109,12 +109,12 @@ footer {
 }
 
 footer nav {
-    color: #3f3f3f;
-    background-color: #ffd903;
+    color: #ababab;
+    background-color: #141414;
 }
 
 footer nav a:visited{
-    color: #3f3f3f;
+    color: #ababab;
 }
 
 footer nav a{
@@ -126,7 +126,7 @@ footer nav a{
 
 /* Events section styling */
 #events {
-    border: solid 1px red;
+    border: solid 0px red;
     display: grid;
     place-items: center;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
@@ -136,8 +136,9 @@ footer nav a{
 
 .event-card {
     display: flex;
+    color: white;
     flex-direction: column;
-    background-color: white;
+    background-color: #141414;
     padding: 0px;
     border-radius: 10px;
     cursor: pointer;
@@ -148,7 +149,7 @@ footer nav a{
 }
 
 .event-card:hover {
-    background-color: #e0f7fa;
+    background-color: #141414;
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -176,7 +177,7 @@ footer nav a{
 
 .event-card .event-date {
     padding: 0.0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #ababab;
 }
 
 .event-card .event-location {

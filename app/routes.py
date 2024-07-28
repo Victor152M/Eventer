@@ -84,11 +84,13 @@ def register():
 
     return render_template("register.html")
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         email = request.form.get("email")
-        password = request.form.get("password")
+
+        if not User.query.filter_by(email=email).first():
+            return jsonify({"success": False, "message": "User doesn't exist"})
 
     return render_template("login.html")
 
