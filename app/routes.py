@@ -1,4 +1,4 @@
-import datetime, os
+import datetime, os, gc
 from app import app
 from .database_functions import db_operation
 from .helper_functions import login_required, allowed_file
@@ -86,7 +86,7 @@ def get_event(event_id):
 def register():
     if request.method == "POST":
         first_name = request.form.get("first_name")
-        last_name = request.form.get("last_name")
+        last_name = request.form.get("last_nameh")
         email = request.form.get("email")
         password_hash = sha256_crypt.encrypt(request.form.get("password"))
 
@@ -109,33 +109,38 @@ def register():
 
     return render_template("register.html")
 
+@app.route("/account", methods=["GET"])
+@login_required
+def account():
+    print("hi")
+    return render_template("index.html")
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        print("user doesnt exist")
 
-        if not db_operation("SELECT * FROM users WHERE email = %s;", params=email, fetch=True):
-            return jsonify({"success": False, "message": "User doesn't exist"})
+        if not db_operation("SELECT * FROM users WHERE email = %s;", params=[email], fetch=True):
+            return jsonify({"success": False, "message": "Wrong password or user does not exist!"})
 
-        password_hash = db_operation("SELECT passowrd_hash FROM users WHERE email = %s", params=email, fetch=True)
+        password_hash_as_list = db_operation("SELECT password_hash FROM users WHERE email = %s;", params=[email], fetch=True)
+        password_hash = password_hash_as_list[0][0]
 
         if sha256_crypt.verify(password, password_hash):
             session['logged_in'] = True
-            first_name = db_operation("SELECT first_name FROM users WHERE email = %s", params=email, fetch=True)
+            first_name = db_operation("SELECT first_name FROM users WHERE email = %s;", params=[email], fetch=True)
             session['username'] = first_name
 
-            flash("You are now logged in")
-            return redirect(url_for("dashboard"))
+            return redirect(url_for("account"))
         
     return render_template("login.html")
 
-@app.route("/logout/")
+@app.route("/logout")
 @login_required
 def logout():
     session.clear()
-    flash("You ahve been logged out")
+    flash("You have been logged out")
     gc.collect()
     return redirect(url_for("index"))
 

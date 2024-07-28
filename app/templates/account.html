@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Page - Events Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+        }
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .profile-info h1 {
+            margin: 0;
+        }
+        .profile-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .event-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .event-item {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .event-item h3 {
+            margin: 0 0 10px 0;
+        }
+        .event-item p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="profile-header">
+            <img src="/api/placeholder/100/100" alt="Profile Avatar" class="profile-avatar">
+            <div class="profile-info">
+                <h1>John Doe</h1>
+                <p>john.doe@example.com</p>
+            </div>
+        </div>
+        <button class="btn" onclick="editProfile()">Edit Profile</button>
+    </div>
+
+    <div class="card">
+        <h2>Upcoming Events</h2>
+        <ul id="upcoming-events" class="event-list"></ul>
+    </div>
+
+    <div class="card">
+        <h2>Past Events</h2>
+        <ul id="past-events" class="event-list"></ul>
+    </div>
+
+    <script>
+        const upcomingEvents = [
+            { title: "Tech Conference 2024", date: "August 15, 2024", location: "San Francisco, CA", time: "9:00 AM - 5:00 PM" },
+            { title: "Local Hackathon", date: "September 1, 2024", location: "New York, NY", time: "10:00 AM - 8:00 PM" },
+        ];
+
+        const pastEvents = [
+            { title: "Web Dev Workshop", date: "June 10, 2024", location: "Online", time: "2:00 PM - 4:00 PM" },
+            { title: "AI in Business Seminar", date: "July 5, 2024", location: "Chicago, IL", time: "1:00 PM - 3:00 PM" },
+        ];
+
+        function createEventElement(event) {
+            const li = document.createElement('li');
+            li.className = 'event-item';
+            li.innerHTML = `
+                <h3>${event.title}</h3>
+                <p>Date: ${event.date}</p>
+                <p>Location: ${event.location}</p>
+                <p>Time: ${event.time}</p>
+            `;
+            return li;
+        }
+
+        function populateEvents(events, elementId) {
+            const eventList = document.getElementById(elementId);
+            events.forEach(event => {
+                eventList.appendChild(createEventElement(event));
+            });
+        }
+
+        function editProfile() {
+            alert("Edit profile functionality would be implemented here.");
+        }
+
+        // Populate events when the page loads
+        window.onload = function() {
+            populateEvents(upcomingEvents, 'upcoming-events');
+            populateEvents(pastEvents, 'past-events');
+        };
+    </script>
+</body>
+</html>
