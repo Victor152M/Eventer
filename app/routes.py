@@ -1,6 +1,7 @@
 import datetime, os
 from app import app
-from .database import db_operation
+from .database_functions import db_operation
+from .helper_functions import login_required, allowed_file
 from flask import render_template, request, flash, redirect, url_for, jsonify, session
 from werkzeug.utils import secure_filename
 from passlib.hash import sha256_crypt
@@ -113,8 +114,9 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
+        print("user doesnt exist")
 
-        if not db_operation("SELECT * FROM users WHERE email = %s", params=email, fetch=True):
+        if not db_operation("SELECT * FROM users WHERE email = %s;", params=email, fetch=True):
             return jsonify({"success": False, "message": "User doesn't exist"})
 
         password_hash = db_operation("SELECT passowrd_hash FROM users WHERE email = %s", params=email, fetch=True)
@@ -123,8 +125,19 @@ def login():
             session['logged_in'] = True
             first_name = db_operation("SELECT first_name FROM users WHERE email = %s", params=email, fetch=True)
             session['username'] = first_name
+
+            flash("You are now logged in")
+            return redirect(url_for("dashboard"))
         
     return render_template("login.html")
+
+@app.route("/logout/")
+@login_required
+def logout():
+    session.clear()
+    flash("You ahve been logged out")
+    gc.collect()
+    return redirect(url_for("index"))
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -135,8 +148,3 @@ def db_entries():
     events = db_operation("SELECT * FROM events;")
     users = db_operation("SELECT * FROM users;")
     return render_template("events/db_entries.html", events=events, users=users)
-
-### helper functions ###
-def allowed_file(filename):
-    return '.' in filename and \
-        filename.rsplit('.', 1)[1].lower() in {"png", "jpg", "jpeg"}

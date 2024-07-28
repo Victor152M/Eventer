@@ -16,6 +16,7 @@ TODO:
 - make the event cards display the months by name
 - make the registration page look nice
 # probably vulnerable to sql injections - FIX THIS (IMPORTANT)
+- read https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
 
 
 (Adaugam ce am facut fiecare)
