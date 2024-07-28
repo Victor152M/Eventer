@@ -21,10 +21,10 @@ function menuOpener() {
     var content = document.getElementById("content");
     if (menu_opener) {
         side_nav.style.width = '200px';
-        content.style.margin = '200px';
+        content.style.margin = '0 0 0 200px';
     } else {
         side_nav.style.width = '65px';
-        content.style.margin = '65px';
+        content.style.margin = '0 0 0 65px';
     }
     menu_opener = !menu_opener;
 }
