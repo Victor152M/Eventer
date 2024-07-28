@@ -15,7 +15,7 @@ def index():
         links.append("/events/event" + str(event[0]))
     if events:
         return render_template("index.html", events=events, links=links)
-    return render_template("index.html")
+    return render_template("account.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
 def post_event():
@@ -112,8 +112,7 @@ def register():
 @app.route("/account", methods=["GET"])
 @login_required
 def account():
-    print("hi")
-    return render_template("index.html")
+    return render_template("account.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -132,7 +131,7 @@ def login():
             first_name = db_operation("SELECT first_name FROM users WHERE email = %s;", params=[email], fetch=True)
             session['username'] = first_name
 
-            return redirect(url_for("account"))
+            return jsonify({"success": True, "message": "Login successful", "redirect": url_for("account")})
         
     return render_template("login.html")
 
