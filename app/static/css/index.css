@@ -112,7 +112,6 @@ main {
 }
 
 .main_content {
-    border: solid 1px red;
     display: block;
     margin-left: 65px;
     padding: 0 60px; 

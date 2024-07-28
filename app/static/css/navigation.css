@@ -17,7 +17,8 @@
 }
 
 .group_nav {
-    display: inline;
+    display: flex;
+    align-items: center;
 }
 
 .menu_activation {
@@ -68,72 +69,21 @@
     color: white;
 }
 
-.home {
-    margin-top: 35px;;
+.sidebar_elem {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color:rgba(255, 255, 255, 0.874);  
+    margin: 50px 0 0 0;
+    color:rgba(255, 255, 255, 0.874);
 }
 
-.home img {
+.sidebar_elem img {
     width: 25px;
-}
+} 
 
-.home p {
+.sidebar_elem p {
     padding: 0;
     margin: 0;
-    font-size: 13px;
-}
-
-.post_event { 
-    margin-top: 35px;  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color:rgba(255, 255, 255, 0.874);
-}
-
-.post_event img {
-    width: 25px;
-}
-
-.post_event p {
-    font-size: 13px;
-}
-
-.account {
-    margin-top: 35px;  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color:rgba(255, 255, 255, 0.874);
-}
-
-.account img {
-    width: 25px;
-}
-
-.account p {
-    font-size: 13px;
-}
-
-.contact {
-    margin-top: 35px;  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color:rgba(255, 255, 255, 0.874);
-}
-
-.contact img {
-    width: 25px;
-}
-
-.contact p {
     font-size: 13px;
 }
