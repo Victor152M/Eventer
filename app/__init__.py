@@ -1,16 +1,11 @@
 from flask import Flask
-from .models import db, Event
+import yaml
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['UPLOAD_FOLDER'] = r"app\static\uploads"
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000 # 16 megabytes for file upload
-app.config['SECRET_KEY'] = "hDau9417nd90lkkanH4c"
-db.init_app(app)
+with open("app/config.yaml", 'r') as f:
+    config = yaml.load(f, Loader=yaml.SafeLoader)
+    app.config['SECRET_KEY'] = config['flask_secret_key']
 
 from . import routes
-from . import models
-
-with app.app_context():
-    db.create_all()
-

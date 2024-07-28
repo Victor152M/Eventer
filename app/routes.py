@@ -1,17 +1,21 @@
-import os
-import datetime
+import datetime, os
 from app import app
-from flask import render_template, request, flash, redirect, url_for, jsonify
-from .models import Event, User, db
+from .database_functions import db_operation
+from .helper_functions import login_required, allowed_file
+from flask import render_template, request, flash, redirect, url_for, jsonify, session
 from werkzeug.utils import secure_filename
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from passlib.hash import sha256_crypt
 
 
 @app.route("/")
 def index():
-    events = db.session.query(Event)
-    return render_template("index.html", events=events)
+    events = db_operation("SELECT * FROM events;", fetch=True)
+    links = []
+    for event in events:
+        links.append("/events/event" + str(event[0]))
+    if events:
+        return render_template("index.html", events=events, links=links)
+    return render_template("index.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
 def post_event():
@@ -45,14 +49,24 @@ def post_event():
 
         #preprocessing the date for uploading to the database
         date = [int(x) for x in date.split("-")]
-        date = datetime.date(date[0], date[1], date[2])
+        date = f"{date[2]}-{date[1]}-{date[0]}"
 
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-            new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
-            new_event.saveToDB()
+            #new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
+            #new_event.saveToDB()
+
+            sql = f"""
+            INSERT INTO events (title, description, image_filepath, date, location)
+            VALUES (%s, %s, %s, %s, %s);
+            """
+
+            parameters = (title, description, image_path, date, location)
+
+            db_operation(sql=sql, params=parameters)
+
             print("Event added successguly")
             flash("The event was added successfully")
             return redirect(url_for("index"))
@@ -62,7 +76,10 @@ def post_event():
 
 @app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
-    event = Event.query.get(event_id)
+    sql = f"SELECT * FROM events WHERE id = %s;"
+    parameters = str(event_id)
+    event = db_operation(sql=sql, params=parameters, fetch=True)
+    # why does it not work to render it in jinja2?
     return render_template("events/event.html", event=event)
 
 @app.route("/register", methods=["GET", "POST"])
@@ -73,12 +90,20 @@ def register():
         email = request.form.get("email")
         password_hash = sha256_crypt.encrypt(request.form.get("password"))
 
-        if User.query.filter_by(email=email).first():
+        sql = f"SELECT * FROM users WHERE email = %s"
+        parameters = (email)
+
+        if db_operations(sql=sql, params=parameters, fetch=True):
             return jsonify({"success": False, "message": "Email already exists"})
-        
-        new_user = User(first_name=first_name, last_name=last_name, email=email)
-        new_user.set_password(password_hash)
-        new_user.saveToDB()
+
+        sql = f"""
+            INSERT INTO users (first_name, last_name, email, password_hash)
+            VALUES ('{first_name}', '{last_name}', '{email}', '{password_hash}');
+            """
+
+        parameters = (first_name, last_name, email, password_hash)
+
+        db_operation(sql=sql, params=parameters)
 
         return jsonify({"success": True, "message": "Registration successful", "redirect": url_for("login")})
 
@@ -88,11 +113,31 @@ def register():
 def login():
     if request.method == "POST":
         email = request.form.get("email")
+        password = request.form.get("password")
+        print("user doesnt exist")
 
-        if not User.query.filter_by(email=email).first():
+        if not db_operation("SELECT * FROM users WHERE email = %s;", params=email, fetch=True):
             return jsonify({"success": False, "message": "User doesn't exist"})
 
+        password_hash = db_operation("SELECT passowrd_hash FROM users WHERE email = %s", params=email, fetch=True)
+
+        if sha256_crypt.verify(password, password_hash):
+            session['logged_in'] = True
+            first_name = db_operation("SELECT first_name FROM users WHERE email = %s", params=email, fetch=True)
+            session['username'] = first_name
+
+            flash("You are now logged in")
+            return redirect(url_for("dashboard"))
+        
     return render_template("login.html")
+
+@app.route("/logout/")
+@login_required
+def logout():
+    session.clear()
+    flash("You ahve been logged out")
+    gc.collect()
+    return redirect(url_for("index"))
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -100,11 +145,6 @@ def page_not_found(e):
 
 @app.route("/db_entries")
 def db_entries():
-    events = db.session.query(Event)
-    users = db.session.query(User)
+    events = db_operation("SELECT * FROM events;")
+    users = db_operation("SELECT * FROM users;")
     return render_template("events/db_entries.html", events=events, users=users)
-
-### helper functions ###
-def allowed_file(filename):
-    return '.' in filename and \
-        filename.rsplit('.', 1)[1].lower() in {"png", "jpg", "jpeg"}

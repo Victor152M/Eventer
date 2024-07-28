@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ event.title }}</title>
-    <link rel="icon" href="../static/images/logo.png"/>
+    <title>{{ event[0][1] }}</title>
+    <!--<link rel="icon" href="../static/images/logo.png"/>-->
     <link rel="stylesheet" href="../../static/css/event.css">
-    <link rel="stylesheet" href="../../static/css/navigation.css">
 </head>
 <body>
     <header>
+        <!--
         <nav class="navbar">
             <div class="logos">
                 <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
@@ -24,6 +24,7 @@
                 <img id="menu__closer" onclick="menuDictating()" class="x_button" src="../static/images/close.png" alt="error img">
             </div>
         </nav>
+        -->
     </header>
     <main>
         <div id="menu__body" class="menu_active">
@@ -38,18 +39,18 @@
                 <a href="/post_event">Post an event</a>
             </div>
         </div>
-        <h1>{{ event.title }}</h1>
+        <h1>{{ event[0][1] }}</h1>
         <img src="{{ url_for('static', 
-        filename=event.image_filepath.replace('app\\static\\', '').replace('\\', '/')) }}" 
-        alt="{{ event.title }}" class="event-image">
+        filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+        alt="{{ event[0][1] }}" class="event-image">
         <div class="event-details">
             <div class="date-location">
-                <span class="date"> {{ event.date }} </span>
-                <span class="location"> {{ event.location }} </span>
+                <span class="date"> {{ event[0][4] }} </span>
+                <span class="location"> {{ event[0][5] }} </span>
             </div>
             <h2>About the Event</h2>
             {% autoescape false %}
-            <p>{{ event.description }}</p>
+            <p>{{ event[0][2] }}</p>
             {% endautoescape %}
             <!--<h3>Highlights:</h3>-->
             <!--<p>{{ event.call_to_action }}</p>-->
