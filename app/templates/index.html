@@ -11,33 +11,35 @@
 <body id="body">
     <header>
         <nav class="navbar">
-            <div class="menu_activation">
-                <img onclick="iconChanger(); menuOpener();" id="open" class="burger" src="../static/images/hamburger_menu.png" alt="ftlp">
-                <img onclick="iconChanger(); menuOpener();" id="close" class="close" src="../static/images/close.png" alt="ftlp">
-            </div>
-            <div class="logos">
-                <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
-                <a href="/" class="logo_text">Eventer</a>
+            <div class="group_nav">
+                <div class="menu_activation">
+                    <img onclick="iconChanger(); menuOpener();" id="open" class="burger" src="../static/images/hamburger_menu.png" alt="ftlp">
+                    <img onclick="iconChanger(); menuOpener();" id="close" class="close" src="../static/images/close.png" alt="ftlp">
+                </div>
+                <div class="logos">
+                    <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
+                    <a href="/" class="logo_text">Eventer</a>
+                </div>
             </div>
         </nav>
     </header>
     <main>
         <sidenav id="side__nav" class="side_nav">
-            <a href="#" class="home">
+            <a href="#" class="sidebar_elem">
                 <img src="../static/images/house2.png" alt="ftlp">
                 <p>Home</p>
             </a>
-            <a href="/post_event" class="post_event">
+            <a href="/post_event" class="post_event sidebar_elem">
                 <img src="../static/images/create_event.png" alt="ftlp">
                 <p>Post</p>
             </a>
-            <a href="/account" class="account">
+            <a href="#" class="sidebar_elem">
                 <img src="../static/images/account.png" alt="ftlp">
                 <p>Account</p>
             </a>
-            <a href="#" class="contact">
+            <a href="#" class="sidebar_elem">
                 <img src="../static/images/phone.png" alt="ftlp">
-                <P>Contact</P>
+                <p>Contact</p>
             </a>
         </sidenav>
         <div id="content" class="main_content">
