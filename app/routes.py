@@ -18,6 +18,7 @@ def index():
     return render_template("account.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
+@login_required
 def post_event():
     if request.method == "POST":
         # check if the post request has the file part
@@ -113,8 +114,7 @@ def register():
 @login_required
 def account():
     username = session['username']
-    email = session['email']
-    events 
+    email = session['email'] 
     return render_template("account.html", username=username[0][0], email=email)
 
 @app.route("/login", methods=["GET", "POST"])
