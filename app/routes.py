@@ -115,7 +115,16 @@ def register():
 def account():
     username = session['username']
     email = session['email'] 
-    return render_template("account.html", username=username[0][0], email=email)
+    user_id = db_operation("SELECT id FROM users WHERE email = %s;", params=[email], fetch=True)[0][0]
+    events = db_operation("SELECT * FROM events WHERE user_id = %s;", params=[user_id], fetch=True)
+    links = []
+    for event in events:
+        links.append("/events/event" + str(event[0]))
+
+    if events:
+        return render_template("account.html", username=username[0][0], email=email, events = events, links=links)
+
+    return render_template("account.html", username=username[0][0])
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
