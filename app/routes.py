@@ -112,7 +112,10 @@ def register():
 @app.route("/account", methods=["GET"])
 @login_required
 def account():
-    return render_template("account.html")
+    username = session['username']
+    email = session['email']
+    events 
+    return render_template("account.html", username=username[0][0], email=email)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -130,6 +133,7 @@ def login():
             session['logged_in'] = True
             first_name = db_operation("SELECT first_name FROM users WHERE email = %s;", params=[email], fetch=True)
             session['username'] = first_name
+            session['email'] = email
 
             return jsonify({"success": True, "message": "Login successful", "redirect": url_for("account")})
         

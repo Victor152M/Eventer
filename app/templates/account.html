@@ -5,91 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Page - Events Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-        .profile-header {
-            display: flex;
-            align-items: center;
-        }
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-        .profile-info h1 {
-            margin: 0;
-        }
-        .profile-info p {
-            margin: 5px 0;
-            color: #666;
-        }
-        .btn {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .event-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .event-item {
-            background-color: #f8f9fa;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 10px;
-        }
-        .event-item h3 {
-            margin: 0 0 10px 0;
-        }
-        .event-item p {
-            margin: 5px 0;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/css/account.css">
 </head>
 <body>
     <div class="card">
         <div class="profile-header">
             <img src="/api/placeholder/100/100" alt="Profile Avatar" class="profile-avatar">
             <div class="profile-info">
-                <h1>John Doe</h1>
-                <p>john.doe@example.com</p>
+                <h1>{{ username }}</h1>
+                <p>{{ email }}</p>
             </div>
         </div>
         <button class="btn" onclick="editProfile()">Edit Profile</button>
     </div>
 
-    <div class="card">
-        <h2>Upcoming Events</h2>
-        <ul id="upcoming-events" class="event-list"></ul>
-    </div>
-
-    <div class="card">
-        <h2>Past Events</h2>
-        <ul id="past-events" class="event-list"></ul>
-    </div>
+    <section id="events">
+        {% for event in events %}
+            <article class="event-card" data-article="{{ links[loop.index0] }}">
+                <img src="{{ url_for('static', 
+                filename=event[3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                alt="{{ event[1] }}">
+                <h3>{{ event[1] }}</h3>
+                <p clasx`s="event-date">Date: {{ event[4] }} </p>
+                <p class="event-location">{{ event[5] }}</p>
+                <!-- make this description not show "..." if the text is short enough -->
+                <!--<p> event.description[:140] + "..." </p> PS: add 2 curly braces for usage-->
+            </article>
+        {% endfor %}
+    </section>
 
     <script>
         const upcomingEvents = [

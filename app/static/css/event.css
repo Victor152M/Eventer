@@ -5,12 +5,19 @@ body {
     max-width: 100%;
     margin: 0 auto;
     background-color: #f4f4f4;
+    
+}
+* {
+    margin: 1px red;
 }
 
 main {
     padding: 2rem 1rem;
     max-width: 1000px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 55;
 }
 
 h1 {
@@ -56,19 +63,6 @@ h1 {
     background-color: #c0392b;
 }
 
-.menu_active {
-    top: 0;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    height: 100vh;
-    background-color: #3f3f3f;
-    color: white;
-    transform: translate(-5000px);
-    transition: transform 0.5s ease;
-    z-index: 11;
-}
 
 .hamburger_menu {
     display: flex;

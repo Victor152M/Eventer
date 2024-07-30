@@ -6,39 +6,43 @@
     <title>{{ event[0][1] }}</title>
     <!--<link rel="icon" href="../static/images/logo.png"/>-->
     <link rel="stylesheet" href="../../static/css/event.css">
+    <link rel="stylesheet" href="../../static/css/navigation.css">
 </head>
 <body>
     <header>
-        <!--
         <nav class="navbar">
-            <div class="logos">
-                <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
-                <a href="/" class="logo_text">Eventer</a>
+            <div class="group_nav">
+                <div class="menu_activation">
+                    <img onclick="iconChanger(); menuOpener();" id="open" class="burger" src="../static/images/hamburger_menu.png" alt="ftlp">
+                    <img onclick="iconChanger(); menuOpener();" id="close" class="close" src="../static/images/close.png" alt="ftlp">
+                </div>
+                <div class="logos">
+                    <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
+                    <a href="/" class="logo_text">Eventer</a>
+                </div>
             </div>
-            <div class="cities">
-                <a href="#"><img class="city_icon" src="../static/images/city.png" alt="rooro"></a>
-                <a href="#"><p>Cities</p></a>
-            </div>
-            <div class="menu">
-                <img id="menu__opener" onclick="menuDictating()" class="hamburger_menu" src="../static/images/hamburger_menu.png" alt="error img">
-                <img id="menu__closer" onclick="menuDictating()" class="x_button" src="../static/images/close.png" alt="error img">
-            </div>
-        </nav>
-        -->
     </header>
     <main>
-        <div id="menu__body" class="menu_active">
-            <ul class="navigation_links">
-                <li class="event_link"><a href="#">Home</a></li>
-                <li class="event_link"><a href="#">Events</a></li>
-                <li class="event_link"><a href="#">Cities</a></li>
-                <li class="event_link"><a href="#">Dates</a></li>
-                <li class="event_link"><a href="#">Contact</a></li>
-            </ul>
-            <div class="post_event">
-                <a href="/post_event">Post an event</a>
-            </div>
-        </div>
+        <!--
+        <sidenav id="side__nav" class="side_nav">
+            <a href="#" class="sidebar_elem">
+                <img src="../../static/images/house2.png" alt="ftlp">
+                <p>Home</p>
+            </a>
+            <a href="/post_event" class="post_event sidebar_elem">
+                <img src="../../static/images/create_event.png" alt="ftlp">
+                <p>Post</p>
+            </a>
+            <a href="/account" class="sidebar_elem">
+                <img src="../../static/images/account.png" alt="ftlp">
+                <p>Account</p>
+            </a>
+            <a href="#" class="sidebar_elem">
+                <img src="../../static/images/phone.png" alt="ftlp">
+                <p>Contact</p>
+            </a>
+        </sidenav>
+        -->
         <h1>{{ event[0][1] }}</h1>
         <img src="{{ url_for('static', 
         filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
