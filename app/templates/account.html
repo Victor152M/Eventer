@@ -1,4 +1,3 @@
-<!-- JUST AN EXAMPLE, WILL MODIFY THIS HEAVILY -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +9,27 @@
 <body>
     <div class="card">
         <div class="profile-header">
-            <img src="/api/placeholder/100/100" alt="Profile Avatar" class="profile-avatar">
+            <!--
+            <img src="" alt="Profile Avatar" class="profile-avatar">
+            -->
             <div class="profile-info">
                 <h1>{{ username }}</h1>
                 <p>{{ email }}</p>
             </div>
         </div>
         <button class="btn" onclick="editProfile()">Edit Profile</button>
+        <button class="btn" onclick="showLogoutConfirmation()">Log Out</button>
+    </div>
+
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-button" onclick="closeModal()">Cancel</button>
+                <button class="modal-button confirm-button" onclick="logout()">Logout</button>
+            </div>
+        </div>
     </div>
 
     <section id="events">
@@ -35,44 +48,25 @@
     </section>
 
     <script>
-        const upcomingEvents = [
-            { title: "Tech Conference 2024", date: "August 15, 2024", location: "San Francisco, CA", time: "9:00 AM - 5:00 PM" },
-            { title: "Local Hackathon", date: "September 1, 2024", location: "New York, NY", time: "10:00 AM - 8:00 PM" },
-        ];
-
-        const pastEvents = [
-            { title: "Web Dev Workshop", date: "June 10, 2024", location: "Online", time: "2:00 PM - 4:00 PM" },
-            { title: "AI in Business Seminar", date: "July 5, 2024", location: "Chicago, IL", time: "1:00 PM - 3:00 PM" },
-        ];
-
-        function createEventElement(event) {
-            const li = document.createElement('li');
-            li.className = 'event-item';
-            li.innerHTML = `
-                <h3>${event.title}</h3>
-                <p>Date: ${event.date}</p>
-                <p>Location: ${event.location}</p>
-                <p>Time: ${event.time}</p>
-            `;
-            return li;
+        function showLogoutConfirmation() {
+            document.getElementById('logoutModal').style.display = 'block';
         }
 
-        function populateEvents(events, elementId) {
-            const eventList = document.getElementById(elementId);
-            events.forEach(event => {
-                eventList.appendChild(createEventElement(event));
-            });
+        function closeModal() {
+            document.getElementById('logoutModal').style.display = 'none';
+        }
+        function logout() {
+            // Redirect to logout page (which redirects to the home page)
+            window.location.href = '/logout';
+            closeModal();
         }
 
-        function editProfile() {
-            alert("Edit profile functionality would be implemented here.");
+        window.onclick = function(event) {
+            var modal = document.getElementById('logoutModal');
+            if (event.target == modal) {
+                closeModal();
+            }
         }
-
-        // Populate events when the page loads
-        window.onload = function() {
-            populateEvents(upcomingEvents, 'upcoming-events');
-            populateEvents(pastEvents, 'past-events');
-        };
     </script>
 </body>
 </html>
