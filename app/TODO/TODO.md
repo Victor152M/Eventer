@@ -29,3 +29,4 @@ Things that are done:
 
 Things got done by Vasile:
 - created the desktop version of the top-navbar and left-sidebar  
+- mobile version of sidebar is up
