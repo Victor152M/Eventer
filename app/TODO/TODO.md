@@ -10,11 +10,11 @@ Vasile:
 - fa pagina de index sa arate bine
 
 TODO:
-- rezolva problema: daca imaginile uploadata au acelasi nume (si deci acceasi locatie), nu mai stim pe care dintre imagini sa le folosim pe pagina evenimentului
 - add a navigation bar on all pages of the website
 - better design for posting events
 - better design for registration
 - make the images display properly on the pages of the events
+- implement functionality for accoutn editing
 
 
 (Adaugam ce am facut fiecare)
@@ -29,3 +29,4 @@ Things that are done:
 - probably vulnerable to sql injections - fixed(hopefully)
 - make a login page with secure, encrypted logins
 - make the event cards display the months by name
+- rezolva problema: daca imaginile uploadata au acelasi nume (si deci acceasi locatie), nu mai stim pe care dintre imagini sa le folosim pe pagina evenimentului

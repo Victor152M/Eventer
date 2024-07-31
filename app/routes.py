@@ -1,4 +1,4 @@
-import datetime, os, gc
+import datetime, os, gc, uuid
 from app import app
 from .database_functions import db_operation
 from .helper_functions import login_required, allowed_file
@@ -66,6 +66,7 @@ def post_event():
 
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
+            filename = str(uuid.uuid4()) + filename
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
             #new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
