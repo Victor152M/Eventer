@@ -1,7 +1,8 @@
 In fisierul asta putem scrie la ce lucram fiecare si ce este de facut:
 
 Victor:
-- make a login page with secure, encrypted logins
+- working on the 'account' page
+- read https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
 
 
 Vasile:
@@ -9,14 +10,11 @@ Vasile:
 - fa pagina de index sa arate bine
 
 TODO:
-- rezolva problema: daca imaginile uploadata au acelasi nume (si deci acceasi locatie), nu mai stim pe care dintre imagini sa le folosim pe pagina evenimentului
 - add a navigation bar on all pages of the website
-- fa pagina de "upload event" sa arate bine
+- better design for posting events
+- better design for registration
 - make the images display properly on the pages of the events
-- make the event cards display the months by name
-- make the registration page look nice
-# probably vulnerable to sql injections - FIX THIS (IMPORTANT)
-- read https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+- implement functionality for accoutn editing
 
 
 (Adaugam ce am facut fiecare)

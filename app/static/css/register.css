@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #141414;
 }
 
 .auth-container {
@@ -29,7 +29,7 @@ input {
 
 button {
     background-color: #ffd903;
-    color: #3f3f3f;
+    color: #141414;
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -63,7 +63,7 @@ button::before {
 
   button:hover {
     color: #ffd903;
-    background-color: #3f3f3f;
+    background-color: #141414;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     transform: scale(1.1);
   }

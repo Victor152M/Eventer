@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Page - Events Website</title>
+    <link rel="stylesheet" href="../static/css/account.css">
+</head>
+<body>
+    <div class="card">
+        <div class="profile-header">
+            <!--
+            <img src="" alt="Profile Avatar" class="profile-avatar">
+            -->
+            <div class="profile-info">
+                <h1>{{ username }}</h1>
+                <p>{{ email }}</p>
+            </div>
+        </div>
+        <button class="btn" onclick="editProfile()">Edit Profile</button>
+        <button class="btn" onclick="showLogoutConfirmation()">Log Out</button>
+    </div>
+
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-button" onclick="closeModal()">Cancel</button>
+                <button class="modal-button confirm-button" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <section id="events">
+        {% for event in events %}
+            <article class="event-card" data-article="{{ links[loop.index0] }}">
+                <img src="{{ url_for('static', 
+                filename=event[3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                alt="{{ event[1] }}">
+                <h3>{{ event[1] }}</h3>
+                <p clasx`s="event-date">Date: {{ event[4] }} </p>
+                <p class="event-location">{{ event[5] }}</p>
+            </article>
+        {% endfor %}
+    </section>
+
+    <script>
+        function showLogoutConfirmation() {
+            document.getElementById('logoutModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('logoutModal').style.display = 'none';
+        }
+        function logout() {
+            // Redirect to logout page (which redirects to the home page)
+            window.location.href = '/logout';
+            closeModal();
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('logoutModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -17,3 +17,11 @@ CREATE TABLE events(
     date DATE,
     location VARCHAR(80)
 );
+
+ALTER TABLE events
+ADD COLUMN user_id INT;
+
+ALTER TABLE events
+ADD CONSTRAINT fk_user
+FOREIGN KEY (user_id)
+REFERENCES users(id);

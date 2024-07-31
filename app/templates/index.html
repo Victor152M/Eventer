@@ -33,7 +33,7 @@
                 <img src="../static/images/create_event.png" alt="ftlp">
                 <p>Post</p>
             </a>
-            <a href="#" class="sidebar_elem">
+            <a href="/account" class="sidebar_elem">
                 <img src="../static/images/account.png" alt="ftlp">
                 <p>Account</p>
             </a>
@@ -59,10 +59,8 @@
                         filename=event[3].replace('app\\static\\', '').replace('\\', '/')) }}" 
                         alt="{{ event[1] }}">
                         <h3>{{ event[1] }}</h3>
-                        <p clasx`s="event-date">Date: {{ event[4] }} </p>
+                        <p clasx`s="event-date">Date: {{ dates[loop.index0] }} </p>
                         <p class="event-location">{{ event[5] }}</p>
-                        <!-- make this description not show "..." if the text is short enough -->
-                        <!--<p> event.description[:140] + "..." </p> PS: add 2 curly braces for usage-->
                     </article>
                 {% endfor %}
             </section>
