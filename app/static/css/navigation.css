@@ -44,12 +44,12 @@
 }
 
 .logo_img {
-    width: 45px;
+    width: 25px;
 }
 
 .logo_text {
-    padding: 0px 20px 5px 10px;
-    font-size: 1.5rem;
+    padding: 0px 20px 0px 10px;
+    font-size: 1.2rem;
     font-family: 'Playwrite';
     color:#ffd903;
     text-decoration: none;
@@ -74,12 +74,12 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    margin: 50px 0 0 0;
+    margin: 40px 0 0 0;
     color:rgba(255, 255, 255, 0.874);
 }
 
 .sidebar_elem img {
-    width: 25px;
+    width: 22px;
 } 
 
 .sidebar_elem p {

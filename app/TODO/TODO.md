@@ -28,3 +28,6 @@ Things that are done:
 - adauga o data pentru fiecare eveniment 
 - change the Event model (add location, etc)
 - make a registration page 
+
+Things got done by Vasile:
+- created the desktop version of the top-navbar and left-sidebar  
