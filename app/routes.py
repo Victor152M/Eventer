@@ -9,12 +9,24 @@ from passlib.hash import sha256_crypt
 
 @app.route("/")
 def index():
-    events = db_operation("SELECT * FROM events;", fetch=True)
     links = []
+    dates = []
+    months = {
+        "01": "ianuarie", "02": "februarie", "03": "martie", \
+        "04": "aprilie", "05": "mai", "06": "iunie", "07": "iulie", \
+        "08": "august", "09": "septembrie", "10": "octombrie", \
+        "11": "noiembrie", "12": "decembrie"}
+
+    events = db_operation("SELECT * FROM events;", fetch=True)
     for event in events:
         links.append("/events/event" + str(event[0]))
+    for event in events:
+        month = months[str(event[4]).split('-')[1]]
+        date = str(str(event[4]).split('-')[2]) + "-" + month \
+            + "-" + str(str(event[4]).split('-')[0])
+        dates.append(date)
     if events:
-        return render_template("index.html", events=events, links=links)
+        return render_template("index.html", events=events, links=links, dates=dates)
     return render_template("account.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
@@ -80,7 +92,6 @@ def get_event(event_id):
     sql = f"SELECT * FROM events WHERE id = %s;"
     parameters = str(event_id)
     event = db_operation(sql=sql, params=parameters, fetch=True)
-    # why does it not work to render it in jinja2?
     return render_template("events/event.html", event=event)
 
 @app.route("/register", methods=["GET", "POST"])

@@ -15,7 +15,6 @@ TODO:
 - better design for posting events
 - better design for registration
 - make the images display properly on the pages of the events
-- make the event cards display the months by name
 
 
 (Adaugam ce am facut fiecare)
@@ -29,3 +28,4 @@ Things that are done:
 - make a registration page 
 - probably vulnerable to sql injections - fixed(hopefully)
 - make a login page with secure, encrypted logins
+- make the event cards display the months by name
