@@ -27,7 +27,7 @@ def index():
         dates.append(date)
     if events:
         return render_template("index.html", events=events, links=links, dates=dates)
-    return render_template("account.html")
+    return render_template("index.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
 @login_required
@@ -106,7 +106,7 @@ def register():
         sql = f"SELECT * FROM users WHERE email = %s"
         parameters = (email)
 
-        if db_operations(sql=sql, params=parameters, fetch=True):
+        if db_operation(sql=sql, params=parameters, fetch=True):
             return jsonify({"success": False, "message": "Email already exists"})
 
         sql = f"""
