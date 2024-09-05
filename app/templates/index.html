@@ -60,7 +60,7 @@
                         filename=event[3].replace('app\\static\\', '').replace('\\', '/')) }}" 
                         alt="{{ event[1] }}">
                         <h3>{{ event[1] }}</h3>
-                        <p clasx`s="event-date">Date: {{ dates[loop.index0] }} </p>
+                        <p class="event-date">Date: {{ dates[loop.index0] }} </p>
                         <p class="event-location">{{ event[5] }}</p>
                     </article>
                 {% endfor %}

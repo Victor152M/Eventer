@@ -177,3 +177,10 @@ def db_entries():
     events = db_operation("SELECT * FROM events;")
     users = db_operation("SELECT * FROM users;")
     return render_template("events/db_entries.html", events=events, users=users)
+
+@app.route("/api/account/remove_event", methods=["POST"])
+def remove_event():
+    event_id = request.json.get('id')
+    if not db_operation("DELETE FROM events WHERE id=%s;", params=[event_id], fetch=False):
+        return jsonify({"status": False, "message": "Could not delete event!"})
+    return jsonify({"status": True, "message": "Event deleted!"})
