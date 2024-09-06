@@ -6,8 +6,7 @@ Victor:
 
 
 Vasile:
-# fa pagina sa arate bine pentru telefon (IMPORTANT)
-- fa pagina de index sa arate bine
+# fa pagina sa arate bine pentru telefon (IMPORTANT) (working on)
 
 TODO:
 - add a navigation bar on all pages of the website
@@ -30,3 +29,4 @@ Things that are done:
 Things got done by Vasile:
 - created the desktop version of the top-navbar and left-sidebar  
 - mobile version of sidebar is up
+- fa pagina de index sa arate bine     (-: at least am încercat >:)
