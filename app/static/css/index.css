@@ -25,7 +25,7 @@ header{
 
 /* Hero section */
 .hero {
-    height: 20rem;
+    height: 25rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -76,6 +76,11 @@ header{
     transition: background-color 0.3s ease;
 }
 
+.cta-button a {
+    text-decoration: none;
+    color: #141414;
+}
+
 .cta-button:hover {
     background-color: #e6c300;
 }
@@ -83,7 +88,7 @@ header{
 .hero-right img {
     max-width: 100%; /* Ensure the image does not exceed container width */
     max-height: 100%; /* Ensure the image does not exceed container height */
-    object-fit: cover; /* Cover ensures the image covers the area while maintaining aspect ratio */
+    /* object-fit: cover; Cover ensures the image covers the area while maintaining aspect ratio */
     border-radius: 10px; /* Optional: Matches the hero container radius */
 }
 
@@ -105,7 +110,6 @@ body, h1, h2, p {
 }
 
 main {
-    max-width: 100%;
     margin: 0 0;
     flex: 1;
     display: flex;
@@ -145,20 +149,20 @@ footer nav a{
 
 /* Events section styling */
 #events {
-    border: solid 0px red;
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
     gap: 2%;
     margin-top: 5%;
 }
 
 .event-card {
+    border: solid 0px rgb(59,59,59);
     display: flex;
     color: white;
     flex-direction: column;
     background-color: #141414;
-    padding: 0px;
+    padding: 5px;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -202,8 +206,4 @@ footer nav a{
 .event-card .event-location {
     padding: 0.0;
     border-top: 1px solid #ddd;
-}
-
-* {
-    border: 0px solid red;
 }
