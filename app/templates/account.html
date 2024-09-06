@@ -41,30 +41,14 @@
                 <h3>{{ event[1] }}</h3>
                 <p clasx`s="event-date">Date: {{ event[4] }} </p>
                 <p class="event-location">{{ event[5] }}</p>
+                <div class="event-actions">
+                    <button class="edit-event" data-id="{{ event[0] }}">Edit</button>
+                    <button class="remove-event" data-id="{{ event[0] }}">Remove</button>
+                </div>
             </article>
         {% endfor %}
     </section>
 
-    <script>
-        function showLogoutConfirmation() {
-            document.getElementById('logoutModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('logoutModal').style.display = 'none';
-        }
-        function logout() {
-            // Redirect to logout page (which redirects to the home page)
-            window.location.href = '/logout';
-            closeModal();
-        }
-
-        window.onclick = function(event) {
-            var modal = document.getElementById('logoutModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
+    <script src="../static/js/account.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ def index():
         dates.append(date)
     if events:
         return render_template("index.html", events=events, links=links, dates=dates)
-    return render_template("account.html")
+    return render_template("index.html")
 
 @app.route("/post_event", methods=["GET", "POST"])
 @login_required
@@ -106,7 +106,7 @@ def register():
         sql = f"SELECT * FROM users WHERE email = %s"
         parameters = (email)
 
-        if db_operations(sql=sql, params=parameters, fetch=True):
+        if db_operation(sql=sql, params=parameters, fetch=True):
             return jsonify({"success": False, "message": "Email already exists"})
 
         sql = f"""
@@ -177,3 +177,10 @@ def db_entries():
     events = db_operation("SELECT * FROM events;")
     users = db_operation("SELECT * FROM users;")
     return render_template("events/db_entries.html", events=events, users=users)
+
+@app.route("/api/account/remove_event", methods=["POST"])
+def remove_event():
+    event_id = request.json.get('id')
+    if not db_operation("DELETE FROM events WHERE id=%s;", params=[event_id], fetch=False):
+        return jsonify({"status": False, "message": "Could not delete event!"})
+    return jsonify({"status": True, "message": "Event deleted!"})
