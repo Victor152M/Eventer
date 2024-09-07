@@ -65,7 +65,6 @@ def post_event():
         date = f"{date[2]}-{date[1]}-{date[0]}"
 
         if image and allowed_file(image.filename):
-            print("hello")
             filename = secure_filename(image.filename)
             filename = str(uuid.uuid4()) + filename
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -74,14 +73,14 @@ def post_event():
             sql = "SELECT id FROM users WHERE email = %s;"
             parameters = [user_email]
             user_id = db_operation(sql=sql, params=parameters, fetch=True)
-            user_id = str(user_id[0][0])
+            user_id_str = str(user_id[0][0])
 
             sql = f"""
             INSERT INTO events (title, description, image_filepath, date, location, user_id)
             VALUES (%s, %s, %s, %s, %s, %s);
             """
 
-            parameters = (title, description, image_path, date, location, user_id)
+            parameters = (title, description, image_path, date, location, user_id_str)
 
             db_operation(sql=sql, params=parameters)
 
