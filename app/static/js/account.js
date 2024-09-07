@@ -19,13 +19,18 @@ window.onclick = function(event) {
     }
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const events = document.querySelectorAll('.event-card');
-    
+
     events.forEach(event => {
-        event.addEventListener('click', () => {
-            const articleUrl = event.getAttribute('data-article');
-            window.location.href = articleUrl;
+        event.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Check if the clicked element is the remove button or its parent
+            if (!e.target.closest('.remove-event')) {
+                const articleUrl = event.getAttribute('data-article');
+                window.location.href = articleUrl;
+            }
         });
     });
 });
