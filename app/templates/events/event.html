@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ event[0][1] }}</title>
-    <!--<link rel="icon" href="../static/images/logo.png"/>-->
+    <link rel="icon" href="../../static/images/logo.png"/>
     <link rel="stylesheet" href="../../static/css/event.css">
     <link rel="stylesheet" href="../../static/css/navigation.css">
+    <link rel="stylesheet" href="../../static/css/footer.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="group_nav">
                 <div class="menu_activation">
-                    <img onclick="iconChanger(); menuOpener();" id="open" class="burger" src="../static/images/hamburger_menu.png" alt="ftlp">
-                    <img onclick="iconChanger(); menuOpener();" id="close" class="close" src="../static/images/close.png" alt="ftlp">
+                    <img onclick="iconChanger(); handleMenuToggle();" id="open" class="burger" src="../static/images/hamburger_menu.png" alt="ftlp">
+                    <img onclick="iconChanger(); handleMenuToggle();" id="close" class="close" src="../static/images/close.png" alt="ftlp">
                 </div>
                 <div class="logos">
                     <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
@@ -23,44 +24,54 @@
             </div>
     </header>
     <main>
-<!--         
-        <sidenav id="side__nav" class="side_nav" >
-            <a href="#" class="sidebar_elem">
-                <img src="../../static/images/house2.png" alt="ftlp">
-                <p>Home</p>
+        <sidenav id="side__nav" class="side_nav">
+            <a href="/" class="sidebar_elem">
+                <img src="../static/images/house2.png" alt="ftlp">
+                <p>Acasă</p>
             </a>
             <a href="/post_event" class="post_event sidebar_elem">
-                <img src="../../static/images/create_event.png" alt="ftlp">
-                <p>Post</p>
+                <img src="../static/images/create_event.png" alt="ftlp">
+                <p>Postează</p>
             </a>
             <a href="/account" class="sidebar_elem">
-                <img src="../../static/images/account.png" alt="ftlp">
-                <p>Account</p>
+                <img src="../static/images/account.png" alt="ftlp">
+                <p>Cont</p>
             </a>
-            <a href="#" class="sidebar_elem">
-                <img src="../../static/images/phone.png" alt="ftlp">
+            <a href="/contact" class="sidebar_elem">
+                <img src="../static/images/phone.png" alt="ftlp">
                 <p>Contact</p>
             </a>
         </sidenav>
-        -->
-        <h1>{{ event[0][1] }}</h1>
-        <img src="{{ url_for('static', 
-        filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
-        alt="{{ event[0][1] }}" class="event-image">
-        <div class="event-details">
-            <div class="date-location">
-                <span class="date"> {{ event[0][4] }} </span>
-                <span class="location"> {{ event[0][5] }} </span>
+        <div id="content" class="main_content">
+            <div class="all_event">
+                <h1>{{ event[0][1] }}</h1>
+                <img src="{{ url_for('static', 
+                filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                alt="{{ event[0][1] }}" class="event-image">
+                <div class="event-details">
+                    <div class="date-location">
+                        <span class="date"> {{ event[0][4] }} </span>
+                        <span class="location"> {{ event[0][5] }} </span>
+                    </div>
+                    <h2>About the Event</h2>
+                    {% autoescape false %}
+                    <p>{{ event[0][2] }}</p>
+                    {% endautoescape %}
+                    <!--<h3>Highlights:</h3>-->
+                    <!--<p>{{ event.call_to_action }}</p>-->
+                    <!--<a href="" class="cta-button">Buy Tickets</a>-->
+                </div>
             </div>
-            <h2>About the Event</h2>
-            {% autoescape false %}
-            <p>{{ event[0][2] }}</p>
-            {% endautoescape %}
-            <!--<h3>Highlights:</h3>-->
-            <!--<p>{{ event.call_to_action }}</p>-->
-            <!--<a href="" class="cta-button">Buy Tickets</a>-->
         </div>
     </main>
+    <footer>
+        <nav>
+        <p>&copy; 2024 Eventer. All rights reserved.</p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact Us</a>
+        </nav>
+    </footer>
     <script src="../../static/js/scripts.js"></script>
     <script src="../../static/js/navbar.js"></script>
 

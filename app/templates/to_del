@@ -1,0 +1,19 @@
+<div class="all_event">
+                <h1>{{ event[0][1] }}</h1>
+                <img src="{{ url_for('static', 
+                filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                alt="{{ event[0][1] }}" class="event-image">
+                <div class="event-details">
+                    <div class="date-location">
+                        <span class="date"> {{ event[0][4] }} </span>
+                        <span class="location"> {{ event[0][5] }} </span>
+                    </div>
+                    <h2>About the Event</h2>
+                    {% autoescape false %}
+                    <p>{{ event[0][2] }}</p>
+                    {% endautoescape %}
+                    <!--<h3>Highlights:</h3>-->
+                    <!--<p>{{ event.call_to_action }}</p>-->
+                    <!--<a href="" class="cta-button">Buy Tickets</a>-->
+                </div>
+            </div>

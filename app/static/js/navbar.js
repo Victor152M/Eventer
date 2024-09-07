@@ -39,7 +39,7 @@ function menuOpenerDesktop() {
             // because if we add another button in the side_menu before the post button,
             // the second button will always turn into "Post an event", even if it shouldn't.
             if (i == 1) {
-                text.textContent = 'Post an event';
+                text.textContent = 'Postează un event';
             }
         }
     } else {
