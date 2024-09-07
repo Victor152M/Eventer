@@ -140,7 +140,7 @@ def account():
     if events:
         return render_template("account.html", username=username[0][0], email=email, events = events, links=links)
 
-    return render_template("account.html", username=username[0][0])
+    return render_template("account.html", username=username[0][0], email=email)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
