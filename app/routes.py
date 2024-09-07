@@ -65,23 +65,27 @@ def post_event():
         date = f"{date[2]}-{date[1]}-{date[0]}"
 
         if image and allowed_file(image.filename):
+            print("hello")
             filename = secure_filename(image.filename)
             filename = str(uuid.uuid4()) + filename
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-            #new_event = Event(title=title, description=description, image=image_path, date=date, location=location)
-            #new_event.saveToDB()
+            user_email = session['email']
+            sql = "SELECT id FROM users WHERE email = %s;"
+            parameters = [user_email]
+            user_id = db_operation(sql=sql, params=parameters, fetch=True)
+            user_id = str(user_id[0][0])
 
             sql = f"""
-            INSERT INTO events (title, description, image_filepath, date, location)
-            VALUES (%s, %s, %s, %s, %s);
+            INSERT INTO events (title, description, image_filepath, date, location, user_id)
+            VALUES (%s, %s, %s, %s, %s, %s);
             """
 
-            parameters = (title, description, image_path, date, location)
+            parameters = (title, description, image_path, date, location, user_id)
 
             db_operation(sql=sql, params=parameters)
 
-            print("Event added successguly")
+            print("Event added successfuly")
             flash("The event was added successfully")
             return redirect(url_for("index"))
         else:
@@ -90,8 +94,8 @@ def post_event():
 
 @app.route("/events/event<int:event_id>", methods=["GET"])
 def get_event(event_id):
-    sql = f"SELECT * FROM events WHERE id = %s;"
-    parameters = str(event_id)
+    sql = "SELECT * FROM events WHERE id = %s;"
+    parameters = [str(event_id)]
     event = db_operation(sql=sql, params=parameters, fetch=True)
     return render_template("events/event.html", event=event)
 
