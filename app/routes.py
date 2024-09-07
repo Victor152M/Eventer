@@ -187,3 +187,7 @@ def remove_event():
     if not db_operation("DELETE FROM events WHERE id=%s;", params=[event_id], fetch=False):
         return jsonify({"status": False, "message": "Could not delete event!"})
     return jsonify({"status": True, "message": "Event deleted!"})
+
+@app.route("/contact", methods=["GET"])
+def contact():
+    return render_template("contact.html")

@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #141414;
+}
+
+h1, h2, p { 
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background-color: #141414;
+    color: #ababab;
+    height: auto;
+    width: 100%;
+    display: block;    
+}
+
+.main {
+    background-color: #141414;
+    margin: 0 0;
+    flex: 1;
+    display: flex;
+    height: 30rem;
+}
+
+.main_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #141414;
+    padding: 0 60px;
+}
+
+.greetings {
+    padding-left: 100px;
+    padding-right: 100px;
+    width: calc(100% - 300px);
+    height: auto;
+    color: white;
+}
+
+.greetings img {
+    width: 50px;
+    margin: 5px 0;
+}
+
+.greetings h2 {
+    font-size: 2.1rem;
+    margin: 15px 0;
+}
+
+.greetings p {
+    font-size: 1.1rem;
+    margin: 15px 0;
+}
+
+.help_buttons {
+    display: flex;
+    width: calc(100% - 300px);
+    padding-left: 150px;
+    padding-right: 150px;
+    justify-content: space-between;
+    border-bottom: solid 2px white;
+}
+
+.email {
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.mail_paragraphs a {
+    color: white;
+    text-decoration: none;
+}
+
+.mail_paragraphs h4 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.mail_paragraphs p {
+    font-size: 12px;
+    opacity: 50%;
+    font-weight: 100;
+}
+
+.email img {
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.the_mail_displayed {
+    color: white;
+    margin-top: 10px;
+}
+
+.the_mail_displayed a {
+    color: white;
+    text-decoration: none;
+}
+
+.questions {
+    padding: 50px 100px;
+    width: calc(100% - 300px);
+    min-height: 100vh;
+    color: white;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid 2px white;
+}
+
+.questions h2 {
+    font-size: 2.1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.faq {
+    max-width: auto;
+    margin-top: 1.5rem;
+    border-bottom: 2px solid #ffffff2b;
+    cursor: pointer;
+}
+
+.question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 0.5rem;
+}
+
+.question h3 {
+    font-size: 1.2rem;
+    margin-top:0;
+    margin-bottom: 0;
+}
+
+.question img {
+    width: 25px;
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.answer p {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.faq.active .answer {
+    max-height: 300px;;
+}
