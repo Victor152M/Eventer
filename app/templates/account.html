@@ -26,11 +26,23 @@
             <h2>Confirm Logout</h2>
             <p>Are you sure you want to log out?</p>
             <div class="modal-buttons">
-                <button class="modal-button cancel-button" onclick="closeModal()">Cancel</button>
+                <button class="modal-button cancel-button" onclick="closeLogoutModal()">Cancel</button>
                 <button class="modal-button confirm-button" onclick="logout()">Logout</button>
             </div>
         </div>
     </div>
+
+    <div id="removeEventModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Event Removal</h2>
+            <p>Are you sure you want to remove the event?</p>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-button" onclick="cancelRemoval()">Cancel</button>
+                <button class="modal-button confirm-button" onclick="confirmRemoval()">Remove</button>
+            </div>
+        </div>
+    </div>
+
 
     <section id="events">
         {% for event in events %}

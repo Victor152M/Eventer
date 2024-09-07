@@ -131,3 +131,31 @@ body {
     background-color: #f44336;
     color: white;
 }
+
+/* Remove event modal*/
+.confirm-btn, .cancel-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    background-color: #ff4d4d; /* Red for confirm */
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #4CAF50; /* Green for cancel */
+    color: white;
+}
+
+/* Add some hover effects */
+.confirm-btn:hover {
+    background-color: #ff1a1a;
+}
+
+.cancel-btn:hover {
+    background-color: #45a049;
+}
