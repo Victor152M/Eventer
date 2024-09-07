@@ -1,0 +1,22 @@
+footer {
+    background-color: #141414;
+    color: #ababab;
+    padding: 1rem 0;
+    text-align: center;
+    /* margin-top: 2rem; */
+    bottom: 0;
+    height: 2.5rem;
+}
+
+footer nav {
+    color: #ababab;
+    background-color: #141414;
+}
+
+footer nav a:visited{
+    color: #ababab;
+}
+
+footer nav a{
+    text-decoration: none;
+}
