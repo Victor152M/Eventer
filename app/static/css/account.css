@@ -1,11 +1,38 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: white;
-    max-width: 800px;
+    color: #ababab;
+    max-width: 100vw;
     margin: 0 auto;
-    padding: 20px;
     background-color: #141414;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header{
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background-color: #141414;
+    color: #ababab;
+    height: auto;
+    width: 100%;
+    display: block;
+}
+
+main {
+    margin: 0 0;
+    flex: 1;
+    display: flex;
+    margin-bottom: 2.5rem;
+}
+
+.main_content {
+    display: block;
+    margin-left: 65px;
+    padding: 0 60px; 
 }
 
 /* Buttons styling */
@@ -24,7 +51,6 @@ body {
 
 /* Events section styling */
 #events {
-    border: solid 0px red;
     display: grid;
     place-items: center;
     grid-template-columns: repeat(4, minmax(200px, 1fr));

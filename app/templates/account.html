@@ -5,62 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Page - Events Website</title>
     <link rel="stylesheet" href="../static/css/account.css">
+    <link rel="stylesheet" href="../static/css/navigation.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
 </head>
 <body>
-    <div class="card">
-        <div class="profile-header">
-            <!--
-            <img src="" alt="Profile Avatar" class="profile-avatar">
-            -->
-            <div class="profile-info">
-                <h1>{{ username }}</h1>
-                <p>{{ email }}</p>
-            </div>
-        </div>
-        <button class="btn" onclick="editProfile()">Edit Profile</button>
-        <button class="btn" onclick="showLogoutConfirmation()">Log Out</button>
-    </div>
-
-    <div id="logoutModal" class="modal">
-        <div class="modal-content">
-            <h2>Confirm Logout</h2>
-            <p>Are you sure you want to log out?</p>
-            <div class="modal-buttons">
-                <button class="modal-button cancel-button" onclick="closeLogoutModal()">Cancel</button>
-                <button class="modal-button confirm-button" onclick="logout()">Logout</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="removeEventModal" class="modal">
-        <div class="modal-content">
-            <h2>Confirm Event Removal</h2>
-            <p>Are you sure you want to remove the event?</p>
-            <div class="modal-buttons">
-                <button class="modal-button cancel-button" onclick="cancelRemoval()">Cancel</button>
-                <button class="modal-button confirm-button" onclick="confirmRemoval()">Remove</button>
-            </div>
-        </div>
-    </div>
-
-
-    <section id="events">
-        {% for event in events %}
-            <article class="event-card" data-article="{{ links[loop.index0] }}">
-                <img src="{{ url_for('static', 
-                filename=event[3].replace('app\\static\\', '').replace('\\', '/')) }}" 
-                alt="{{ event[1] }}">
-                <h3>{{ event[1] }}</h3>
-                <p clasx`s="event-date">Date: {{ event[4] }} </p>
-                <p class="event-location">{{ event[5] }}</p>
-                <div class="event-actions">
-                    <button class="edit-event" data-id="{{ event[0] }}">Edit</button>
-                    <button class="remove-event" data-id="{{ event[0] }}">Remove</button>
+    <header>
+        <nav class="navbar">
+            <div class="group_nav">
+                <div class="menu_activation">
+                    <img onclick="iconChanger(); handleMenuToggle();" id="open" class="burger" src="../static/images/hamburger_menu.png" alt="ftlp">
+                    <img onclick="iconChanger(); handleMenuToggle();" id="close" class="close" src="../static/images/close.png" alt="ftlp">
                 </div>
-            </article>
-        {% endfor %}
-    </section>
+                <div class="logos">
+                    <a href="/"><img class="logo_img" src="../static/images/logo.png" alt="error img"></a>
+                    <a href="/" class="logo_text">Eventer</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <sidenav id="side__nav" class="side_nav">
+            <a href="/" class="sidebar_elem">
+                <img src="../static/images/house2.png" alt="ftlp">
+                <p>Acasă</p>
+            </a>
+            <a href="/post_event" class="post_event sidebar_elem">
+                <img src="../static/images/create_event.png" alt="ftlp">
+                <p>Postează</p>
+            </a>
+            <a href="/account" class="sidebar_elem">
+                <img src="../static/images/account.png" alt="ftlp">
+                <p>Cont</p>
+            </a>
+            <a href="/contact" class="sidebar_elem">
+                <img src="../static/images/phone.png" alt="ftlp">
+                <p>Contact</p>
+            </a>
+        </sidenav>
+        <div id="content" class="main_content">
+            <div class="card">
+                <div class="profile-header">
+                    <!--
+                    <img src="" alt="Profile Avatar" class="profile-avatar">
+                    -->
+                    <div class="profile-info">
+                        <h1>{{ username }}</h1>
+                        <p>{{ email }}</p>
+                    </div>
+                </div>
+                <button class="btn" onclick="editProfile()">Edit Profile</button>
+                <button class="btn" onclick="showLogoutConfirmation()">Log Out</button>
+            </div>
+        
+            <div id="logoutModal" class="modal">
+                <div class="modal-content">
+                    <h2>Confirm Logout</h2>
+                    <p>Are you sure you want to log out?</p>
+                    <div class="modal-buttons">
+                        <button class="modal-button cancel-button" onclick="closeLogoutModal()">Cancel</button>
+                        <button class="modal-button confirm-button" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="removeEventModal" class="modal">
+                <div class="modal-content">
+                    <h2>Confirm Event Removal</h2>
+                    <p>Are you sure you want to remove the event?</p>
+                    <div class="modal-buttons">
+                        <button class="modal-button cancel-button" onclick="cancelRemoval()">Cancel</button>
+                        <button class="modal-button confirm-button" onclick="confirmRemoval()">Remove</button>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <section id="events">
+                {% for event in events %}
+                    <article class="event-card" data-article="{{ links[loop.index0] }}">
+                        <img src="{{ url_for('static', 
+                        filename=event[3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                        alt="{{ event[1] }}">
+                        <h3>{{ event[1] }}</h3>
+                        <p clasx`s="event-date">Date: {{ event[4] }} </p>
+                        <p class="event-location">{{ event[5] }}</p>
+                        <div class="event-actions">
+                            <button class="edit-event" data-id="{{ event[0] }}">Edit</button>
+                            <button class="remove-event" data-id="{{ event[0] }}">Remove</button>
+                        </div>
+                    </article>
+                {% endfor %}
+            </section>
+        </div> 
+    </main>
+    <footer>
+        <nav>
+        <p>&copy; 2024 Eventer. All rights reserved.</p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact Us</a>
+        </nav>
+    </footer>
 
     <script src="../static/js/account.js"></script>
+    <script src="../static/js/navbar.js"></script>
 </body>
 </html>
