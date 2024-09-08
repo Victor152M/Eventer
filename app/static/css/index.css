@@ -158,7 +158,7 @@ body {
 main {
     flex: 1;
     display: flex;
-    width: 100%;
+    margin: 0 0;
     margin-bottom: 2.5rem;
 }
 
@@ -172,7 +172,7 @@ body, h1, h2, p {
 .main_content {
     display: block;
     width: 100%;
-    margin: 0 auto; /* This centers the content */
+    margin-left: 65px;
     padding: 0 20px; /* Adds some padding on smaller screens */
     box-sizing: border-box; /* Includes padding in the width calculation */
 }
