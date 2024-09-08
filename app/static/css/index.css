@@ -5,6 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/gagalin');
 /* This is a good practice I think, why aren't we using it
  by default? */
 * {
@@ -107,10 +108,14 @@ header{
 }
 
 .hero-left h2 {
-    font-size: 2rem;
+    font-size: 5rem;
     font-weight: 70;
     margin-bottom: 20px;
     letter-spacing: 1px;
+    font-family: 'Gagalin', sans-serif; 
+    transform: rotate(-20deg) translateY(-70%);            
+    transform-origin: center;  
+    line-height: 0.85;  
 }
 
 .cta-button {
@@ -162,7 +167,7 @@ main {
     margin-bottom: 2.5rem;
 }
 
-body, h1, h2, p {
+body, h1, p {
     margin: 0;
     padding: 0;
     font-family: 'TimesNew Roman', Times, serif;
