@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Playwrite';
     src: url('../fonts/Playwrite_BE_VLG/static/PlaywriteBEVLG-Regular.ttf'); 
-  }
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');

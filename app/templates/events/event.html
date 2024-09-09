@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../static/css/event.css">
     <link rel="stylesheet" href="../../static/css/navigation.css">
     <link rel="stylesheet" href="../../static/css/footer.css">
+    <link rel="stylesheet" href="../../static/css/share_button.css">
 </head>
 <body>
     <header>
@@ -43,17 +44,41 @@
             </a>
         </sidenav>
         <div id="content" class="main_content">
-            <div class="all_event">
-                <h1>{{ event[0][1] }}</h1>
+
+            <!-- Irelevant momentan -->
+            <div style="display: none;" class="preview_of_event">
                 <img src="{{ url_for('static', 
-                filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
-                alt="{{ event[0][1] }}" class="event-image">
+                        filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                        alt="{{ event[0][1] }}">
+                <div class="texts">
+                    <div class="up_text">
+                        <p>{{event[0][1]}} | {{event[0][5].split(',')[1]}} | {{event[0][4]}}</p> 
+                    </div>
+                    <div class="bottom_text">
+
+                    </div>
+                </div>
+            </div>
+            <!-- Irelevant ^ -->
+
+            <div class="all_event">
+                <div class="cover_image">
+                    <img src="{{ url_for('static', 
+                    filename=event[0][3].replace('app\\static\\', '').replace('\\', '/')) }}" 
+                    alt="{{ event[0][1] }}" class="event-image">
+                </div>
                 <div class="event-details">
                     <div class="date-location">
-                        <span class="date"> {{ event[0][4] }} </span>
+                        <span class="date">Dată: {{ event[0][4] }} </span>
                         <span class="location"> {{ event[0][5] }} </span>
                     </div>
-                    <h2>About the Event</h2>
+                    <div class="tile_and_link">
+                        <h1 class="event_title">{{ event[0][1] }}</h1>
+                        <div class="share_button" id="link_button">
+                            <img class="link_image" src="../../static/images/get_link.png" alt="">
+                            <p class="convince_to_share">Sharing is caring</p>
+                        </div>
+                    </div>  
                     {% autoescape false %}
                     <p>{{ event[0][2] }}</p>
                     {% endautoescape %}
@@ -74,6 +99,6 @@
     </footer>
     <script src="../../static/js/scripts.js"></script>
     <script src="../../static/js/navbar.js"></script>
-
-</body>
+    <script src="../../static/js/share_button.js"></script>
+</body> 
 </html>

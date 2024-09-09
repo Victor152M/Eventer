@@ -20,3 +20,16 @@ footer nav a:visited{
 footer nav a{
     text-decoration: none;
 }
+
+@media (max-width: 1000px) { 
+    footer {
+        background-color: #141414;
+        color: #ababab;
+        padding: 1rem 0;
+        text-align: center;
+        margin-top: 2rem;
+        bottom: 0;
+        height: 2.5rem;
+    }
+     
+}
