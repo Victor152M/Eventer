@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/navigation.css">
     <link rel="stylesheet" href="../static/css/footer.css">
+    <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
 </head>
 <body id="body">
     <header>
@@ -46,14 +47,26 @@
         <div id="content" class="main_content">
             <section class="hero" id="hero">
                 <div class="hero-left" id="hero__left">
-                    <h2>Distribuie evenimente!</h2>
-                    <button class="cta-button" id="call__to__action__hero"><a href="#events">Găsește-mi un eveniment</a></button>
+                    <h2>Clipele devin amintiri!</h2>
+                    <button class="cta-button" id="call__to__action__hero">
+                        <a href="#events">Găsește-mi un eveniment</a>
+                    </button>
                 </div>
                 <div class="hero-right" id="hero__right">
-                    <img src="../static/images/hero.jpg">
+                    <div class="image-container">
+                        <img src="../static/images/hero.jpg" alt="Event Image 1">
+                    </div>
+                    <div class="image-container">
+                        <img src="../static/images/hero2.jpg" alt="Event Image 2">
+                    </div>
+                    <div class="image-container">
+                        <img src="../static/images/hero3.jpg" alt="Event Image 3">
+                    </div>
+                    <div class="image-container">
+                        <img src="../static/images/hero4.jpg" alt="Event Image 4">
+                    </div>
                 </div>
             </section>
-            <hr>
             <section id="events">
                 {% for event in events %}
                     <article class="event-card" data-article="{{ links[loop.index0] }}">
