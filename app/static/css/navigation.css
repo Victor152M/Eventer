@@ -44,12 +44,13 @@
 }
 
 .logo_img {
-    width: 25px;
+    width: 2.8rem;
+    align-items: center;
 }
 
 .logo_text {
     padding: 0px 20px 0px 10px;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     font-family: 'Playwrite';
     color:#ffd903;
     text-decoration: none;
