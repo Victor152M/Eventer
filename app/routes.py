@@ -7,8 +7,19 @@ from werkzeug.utils import secure_filename
 from passlib.hash import sha256_crypt
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
+    if request.method == "POST":
+        data = request.json
+        feedback = data.get('feedback')
+
+        if session['email'] and feedback:
+            email = session['email']
+            db_operation(f"INSERT INTO feedback (email, feedback) VALUES (%s, %s);", params=(email, feedback))
+
+        elif feedback:
+            db_operation(f"INSERT INTO feedback (feedback) VALUES (%s);", params=(feedback))
+
     links = []
     dates = []
     months = {

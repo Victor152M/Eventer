@@ -49,26 +49,3 @@ document.addEventListener('DOMContentLoaded', function() {
         events.style.gridTemplateColumns = 'repeat(2, minmax(150px, 1fr))';
     }
 });
-
-// feedback widget
-const widget = document.getElementById('feedback-widget');
-const toggle = document.getElementById('feedback-toggle');
-const submit = document.getElementById('feedback-submit');
-const textarea = document.getElementById('feedback-text');
-
-toggle.addEventListener('click', () => {
-  widget.classList.toggle('feedback-closed');
-});
-
-submit.addEventListener('click', () => {
-  const feedback = textarea.value.trim();
-  if (feedback) {
-    // Here we will send the feedback to your server
-    console.log('Feedback submitted:', feedback);
-    alert('Thank you for your feedback!');
-    textarea.value = '';
-    widget.classList.add('feedback-closed');
-  } else {
-    alert('Please enter your feedback before submitting.');
-  }
-});
