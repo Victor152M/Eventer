@@ -106,21 +106,23 @@ header{
     transform-origin: center;  
     line-height: 0.85;
     max-width: 90%;
-    text-align: left;
+    text-align: center;
     max-height:100%
 }
 
-.cta-buttons {
+.cta-buttons-container {
     margin-top: 7rem;
     margin-bottom: 0;
     width: 100%;
-    align-items: center;
+    display: flex;               
+    justify-content: center;      /* Centers the buttons horizontally */
+    gap: 20px;                    /* Adds spacing between the buttons */
 }
 
 .cta-button {
     background-color: #ffd903;
     color: #141414;
-    padding: 0.25rem 15px;
+    padding: 0.45rem 0.8rem;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -128,7 +130,7 @@ header{
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 0.3rem 0;
+    margin: 0.3rem 0.2rem;
 }
 
 .cta-button a {
