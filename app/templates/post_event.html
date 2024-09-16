@@ -11,45 +11,45 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Post Your Event!</h1>
-            <p class="subtitle">Share the excitement with the world! ;) </p>
+            <h1>Publică-ți evenimentul!</h1>
+            <p class="subtitle">Fă-ți evenimentul cunoscut! 😃 </p>
         </div>
         <form action="#" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="image">Event Image</label>
-                <label for="image" class="file-upload-btn">Choose File</label>
+                <label for="image">Imaginea evenimentului</label>
+                <label for="image" class="file-upload-btn">Alege fișierul</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
             </div>
             <div class="form-group">
-                <label for="title">Event Title</label>
+                <label for="title">Titlul</label>
                 <input type="text" id="title" name="title" required placeholder="Enter your event's captivating title">
             </div>
             <div class="form-group">
-                <label for="event-date">Event Date</label>
+                <label for="event-date">Data</label>
                 <input type="date" id="date" name="date" required>
             </div>
             <div class="form-group">
-                <label for="description">Event Description</label>
+                <label for="description">Descrierea</label>
                 <textarea id="description" name="description" rows="4" required placeholder="Describe your amazing event in vivid detail"></textarea>
             </div>
             <div class="form-group">
-                <label for="location">Event Location</label>
+                <label for="location">Locația</label>
                 <div class="location-selector">
                     <select id="country" name="country" required>
-                        <option value="">Select Country</option>
+                        <option value="">Selectează țara</option>
                         <!-- Add more countries as needed -->
                         <option value="Romania">Romania</option>
                         <!-- add more options (like the one above) as needed -->
                     </select>
                     <select id="city" name="city" required>
-                        <option value="">Select City</option>
+                        <option value="">Selectează orașul</option>
                         <option value="Timișoara">Timișoara</option>
                     </select>
                     <input type="text" id="venue" name="venue" placeholder="Specific venue or address">
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="submit-btn">Launch Your Event</button>
+                <button type="submit" class="submit-btn">Publică evenimentul</button>
             </div>
         </form>
     </div>

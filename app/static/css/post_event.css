@@ -1,7 +1,7 @@
 :root {
     --primary-color: #ffd903;
     --secondary-color: #3F3D56;
-    --accent-color: #F50057;
+    --accent-color: #00d56a;
     --background-color: #141414;
     --text-color: #333;
 }
@@ -81,6 +81,7 @@ h1 {
     margin-bottom: 10px;
     position: relative;
     z-index: 1;
+    color: #141414;
 }
 
 .subtitle {
@@ -88,6 +89,7 @@ h1 {
     font-weight: 300;
     position: relative;
     z-index: 1;
+    color: #141414;
 }
 
 form {
@@ -187,7 +189,7 @@ textarea {
 }
 
 .submit-btn:hover {
-    background-color: #D50000;
+    background-color: #00af57;
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(245, 0, 87, 0.3);
 }
