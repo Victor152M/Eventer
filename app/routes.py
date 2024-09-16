@@ -195,8 +195,7 @@ def db_entries():
 @app.route("/api/account/remove_event", methods=["POST"])
 def remove_event():
     event_id = request.json.get('id')
-    if not db_operation("DELETE FROM events WHERE id=%s;", params=[event_id], fetch=False):
-        return jsonify({"status": False, "message": "Could not delete event!"})
+    db_operation("DELETE FROM events WHERE id=%s;", params=[event_id], fetch=False)
     return jsonify({"status": True, "message": "Event deleted!"})
 
 @app.route("/contact", methods=["GET"])

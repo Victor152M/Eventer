@@ -37,7 +37,7 @@ header{
     margin: 1rem 0;
     background-color: #141414;
     overflow: hidden;
-    max-height: 55%;
+    max-height: 26rem;
 }
 
 .cta-button:hover {
