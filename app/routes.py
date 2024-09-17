@@ -136,9 +136,13 @@ def register():
 
     return render_template("register.html")
 
-@app.route("/account", methods=["GET"])
+@app.route("/account", methods=["GET", "POST"])
 @login_required
 def account():
+    if request.method == "POST":
+        event_id = request.json.get('id')
+        db_operation("DELETE FROM events WHERE id=%s;", params=[event_id], fetch=False)
+        return jsonify({"status": True, "message": "Event deleted!"})
     username = session['username']
     email = session['email'] 
     user_id = db_operation("SELECT id FROM users WHERE email = %s;", params=[email], fetch=True)[0][0]
@@ -191,12 +195,6 @@ def db_entries():
     events = db_operation("SELECT * FROM events;")
     users = db_operation("SELECT * FROM users;")
     return render_template("events/db_entries.html", events=events, users=users)
-
-@app.route("/api/account/remove_event", methods=["POST"])
-def remove_event():
-    event_id = request.json.get('id')
-    db_operation("DELETE FROM events WHERE id=%s;", params=[event_id], fetch=False)
-    return jsonify({"status": True, "message": "Event deleted!"})
 
 @app.route("/contact", methods=["GET"])
 def contact():

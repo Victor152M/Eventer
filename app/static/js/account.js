@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
            
             try {
-                const response = await fetch('/api/account/remove_event', {
+                const response = await fetch('/account', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
