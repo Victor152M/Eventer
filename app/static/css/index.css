@@ -12,11 +12,6 @@
     box-sizing: border-box;
 }
 
-* {
-    border: 1px solid red;
-}
-
-
 header{
     position: -webkit-sticky; /* For Safari */
     position: sticky;
@@ -304,6 +299,10 @@ body, h1, p {
   }
 
 @media(max-width: 768px) {
+    * {
+        border: 1px solid red;
+    }
+
     .hero {
         display: flex;
         align-items: center;
@@ -321,6 +320,7 @@ body, h1, p {
         width: 100%;
         display: flex;               
         justify-content: center;      /* Centers the buttons horizontally */
+        align-items: center;
         gap: 20px; 
     }
 
@@ -336,6 +336,7 @@ body, h1, p {
         cursor: pointer;
         transition: background-color 0.3s ease;
         margin: 0.3rem 0.2rem;
+        min-height: 1.6rem;
     }
     
     /* doesn't yet display on mobile devices
