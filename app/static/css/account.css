@@ -185,3 +185,25 @@ main {
 .cancel-btn:hover {
     background-color: #45a049;
 }
+
+@media(max-width: 1000px) {
+    #events {
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(3, minmax(180px, 1fr));
+        gap: 2%;
+        margin-top: 5%;
+        margin-right: 1% ;
+    }
+}
+
+@media(max-width: 750px) {
+    #events {
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        gap: 2%;
+        margin-top: 5%;
+        margin-right: 1% ;
+    }
+}
