@@ -491,10 +491,6 @@ body, h1, p {
         box-sizing: border-box; /* Includes padding in the width calculation */
     }
 
-    * {
-        outline: 1px solid red;
-    }
-
     .hero-left {
         position: relative;
         margin-left: 0%;
