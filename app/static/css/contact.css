@@ -173,3 +173,9 @@ header {
 .faq.active .answer {
     max-height: 300px;;
 }
+
+@media(max-width: 1200px) {
+    * {
+        outline: 1px solid red;
+    }
+}
