@@ -178,6 +178,40 @@ def login():
         
     return render_template("login.html")
 
+
+@app.route("/events", methods=["GET", "POST"])
+def events():
+    if request.method == "POST":
+        data = request.json
+        feedback = data.get('feedback')
+
+        if session['email'] and feedback:
+            email = session['email']
+            db_operation(f"INSERT INTO feedback (email, feedback) VALUES (%s, %s);", params=(email, feedback))
+
+        elif feedback:
+            db_operation(f"INSERT INTO feedback (feedback) VALUES (%s);", params=(feedback))
+
+    links = []
+    dates = []
+    months = {
+        "01": "ianuarie", "02": "februarie", "03": "martie", \
+        "04": "aprilie", "05": "mai", "06": "iunie", "07": "iulie", \
+        "08": "august", "09": "septembrie", "10": "octombrie", \
+        "11": "noiembrie", "12": "decembrie"}
+
+    events = db_operation("SELECT * FROM events;", fetch=True)
+    for event in events:
+        links.append("/events/event" + str(event[0]))
+    for event in events:
+        month = months[str(event[4]).split('-')[1]]
+        date = str(str(event[4]).split('-')[2]) + "-" + month \
+            + "-" + str(str(event[4]).split('-')[0])
+        dates.append(date)
+    if events:
+        return render_template("events.html", events=events, links=links, dates=dates)
+    return render_template("events.html")
+
 @app.route("/logout")
 @login_required
 def logout():
