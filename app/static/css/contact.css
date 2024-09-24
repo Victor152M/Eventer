@@ -175,7 +175,63 @@ header {
 }
 
 @media(max-width: 1200px) {
-    * {
-        outline: 1px solid red;
+    .greetings {
+        padding-left: 100px;
+        padding-right: 100px;
+        width: calc(100% - 200px);
+        height: auto;
+        color: white;
     }
+
+    .help_buttons {
+        display: flex;
+        width: calc(100% - 200px);
+        padding-left: 150px;
+        padding-right: 150px;
+        justify-content: space-between;
+        border-bottom: solid 2px white;
+    }
+
+    .questions {
+        padding: 50px 100px;
+        width: calc(100% - 200px);
+        min-height: 100vh;
+        color: white;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid 2px white;
+    }
+}
+
+@media(max-width: 1000px){
+    .greetings {
+        padding-left: 100px;
+        padding-right: 100px;
+        width: 90%;
+        height: auto;
+        color: white;
+    }
+
+    .help_buttons {
+        display: flex;
+        width: 90%;
+        padding-left: 150px;
+        padding-right: 150px;
+        justify-content: space-between;
+    }
+
+    .questions {
+        padding: 50px 100px;
+        width: 90%;
+        min-height: 100vh;
+        color: white;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid 2px white;
+    }
+}
+
+@media(max-width: 880px){
 }
