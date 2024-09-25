@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventer Home</title>
     <link rel="icon" href="../static/images/logo.png"/>
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/events.css">
     <link rel="stylesheet" href="../static/css/navigation.css">
     <link rel="stylesheet" href="../static/css/footer.css">
     <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
@@ -59,6 +59,17 @@
                     {% endfor %}
                 </div>
             </section>
+            <div id="pagination"></div>
+                {% if page > 1 %}
+                    <a href="{{ url_for('events', page=page-1) }}">Previous</a>
+                {% endif %}
+                
+                <span>Page {{ page }} of {{ total_pages }}</span>
+                
+                {% if page < total_pages %}
+                    <a href="{{ url_for('events', page=page+1) }}">Next</a>
+                {% endif %}
+            </div>
         </div> 
     </main>
     <div id="feedback-widget" class="feedback-closed">
