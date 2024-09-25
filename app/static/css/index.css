@@ -98,7 +98,7 @@ header{
     font-weight: 70;
     letter-spacing: 1px;
     font-family: 'Gagalin', sans-serif; 
-    transform: rotate(-12deg) translateY(-15%) translateX(15%);            
+    transform: rotate(-12deg) translateY(-15%) translateX(8%);            
     transform-origin: center;  
     line-height: 0.85;
     max-width: 80%;
@@ -355,7 +355,7 @@ body, h1, p {
         font-weight: 70;
         letter-spacing: 1px;
         font-family: 'Gagalin', sans-serif; 
-        transform: rotate(-12deg) translateY(7%) translateX(12%);            
+        transform: rotate(-12deg) translateY(5%) translateX(10%);            
         transform-origin: center; 
         line-height: 0.85;
         max-width: 80%;
@@ -375,6 +375,7 @@ body, h1, p {
         cursor: pointer;
         transition: background-color 0.3s ease;
         margin: 0.25rem 0.15rem;
+        margin-top: 5rem;
     }
 
     .hero-right {

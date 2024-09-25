@@ -179,7 +179,7 @@ def login():
     return render_template("login.html")
 
 
-EVENTS_PER_PAGE = 2
+EVENTS_PER_PAGE = 16
 
 @app.route("/events", methods=["GET", "POST"])
 def events():

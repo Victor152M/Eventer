@@ -59,15 +59,19 @@
                     {% endfor %}
                 </div>
             </section>
-            <div id="pagination"></div>
+            <div id="pagination">
                 {% if page > 1 %}
-                    <a href="{{ url_for('events', page=page-1) }}">Previous</a>
+                <button class="pagination_buttons">
+                    <a href="{{ url_for('events', page=page-1) }}">Înapoi</a>
+                </button>
                 {% endif %}
                 
-                <span>Page {{ page }} of {{ total_pages }}</span>
+                <span>Pagina {{ page }} din {{ total_pages }}</span>
                 
                 {% if page < total_pages %}
-                    <a href="{{ url_for('events', page=page+1) }}">Next</a>
+                <button class="pagination_buttons">
+                    <a href="{{ url_for('events', page=page+1) }}">Înainte</a>
+                </button>
                 {% endif %}
             </div>
         </div> 

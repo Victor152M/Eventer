@@ -309,6 +309,31 @@ body, h1, p {
 }
 
 /* Pagination */
+#pagination {
+    text-align: center; 
+    margin-top: 20px;
+}
+
+#pagination a {
+    text-decoration: none; /* Remove underline from the links */
+    color: inherit;
+}
+
+.pagination_buttons {
+    background-color: #ffd903;
+    color: #141414;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0.25rem 0.15rem;
+    width: 6rem;
+}
+
 
 
 @media(max-width: 1000px) {
