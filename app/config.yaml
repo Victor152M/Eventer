@@ -1,0 +1,7 @@
+postgresql_database: ""
+postgresql_user: ""
+postgresql_password:  ""
+postgresql_host: ""
+postgresql_port: ""
+
+flask_secret_key: 
