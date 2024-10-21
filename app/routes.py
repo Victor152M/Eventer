@@ -29,14 +29,15 @@ def index():
         "11": "noiembrie", "12": "decembrie"}
 
     events = db_operation("SELECT * FROM events;", fetch=True)
-    for event in events:
-        links.append("/events/event" + str(event[0]))
-    for event in events:
-        month = months[str(event[4]).split('-')[1]]
-        date = str(str(event[4]).split('-')[2]) + "-" + month \
-            + "-" + str(str(event[4]).split('-')[0])
-        dates.append(date)
+
     if events:
+        for event in events:
+            links.append("/events/event" + str(event[0]))
+        for event in events:
+            month = months[str(event[4]).split('-')[1]]
+            date = str(str(event[4]).split('-')[2]) + "-" + month \
+                + "-" + str(str(event[4]).split('-')[0])
+            dates.append(date)
         return render_template("index.html", events=events, links=links, dates=dates)
     return render_template("index.html")
 
