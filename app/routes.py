@@ -149,10 +149,10 @@ def account():
     user_id = db_operation("SELECT id FROM users WHERE email = %s;", params=[email], fetch=True)[0][0]
     events = db_operation("SELECT * FROM events WHERE user_id = %s;", params=[user_id], fetch=True)
     links = []
-    for event in events:
-        links.append("/events/event" + str(event[0]))
-
+    
     if events:
+        for event in events:
+            links.append("/events/event" + str(event[0]))
         return render_template("account.html", username=username[0][0], email=email, events = events, links=links)
 
     return render_template("account.html", username=username[0][0], email=email)
@@ -204,24 +204,26 @@ def events():
         "11": "noiembrie", "12": "decembrie"}
 
     events = db_operation("SELECT * FROM events;", fetch=True)
-    for event in events:
-        links.append("/events/event" + str(event[0]))
-    for event in events:
-        month = months[str(event[4]).split('-')[1]]
-        date = str(str(event[4]).split('-')[2]) + "-" + month \
-            + "-" + str(str(event[4]).split('-')[0])
-        dates.append(date)
 
-    #pagination
-    page = request.args.get('page', 1, type=int)
-    start = (page - 1) * EVENTS_PER_PAGE
-    end = start + EVENTS_PER_PAGE
-    events_for_page = events[start:end]
-    total_pages = (len(events) + EVENTS_PER_PAGE - 1) // EVENTS_PER_PAGE
-    
     if events:
+        for event in events:
+            links.append("/events/event" + str(event[0]))
+        for event in events:
+            month = months[str(event[4]).split('-')[1]]
+            date = str(str(event[4]).split('-')[2]) + "-" + month \
+                + "-" + str(str(event[4]).split('-')[0])
+            dates.append(date)
+    
+        #pagination
+        page = request.args.get('page', 1, type=int)
+        start = (page - 1) * EVENTS_PER_PAGE
+        end = start + EVENTS_PER_PAGE
+        events_for_page = events[start:end]
+        total_pages = (len(events) + EVENTS_PER_PAGE - 1) // EVENTS_PER_PAGE
+    
         return render_template("events.html", events=events_for_page, links=links, dates=dates, \
                                 page=page, total_pages=total_pages)
+        
     return render_template("events.html")
 
 @app.route("/logout")
