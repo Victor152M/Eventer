@@ -13,6 +13,7 @@ This web app lets users discover and create events happening in Timișoara.
 - Passwords are encrypted for security.  
 - Sessions are managed with cookies for a smooth experience.
 
+## Screenshots
 ![Screenshot](/images/image1.png)
 ![Screenshot](/images/image3.png)
 ![Screenshot](/images/image4.png)
