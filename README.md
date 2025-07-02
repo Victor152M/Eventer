@@ -21,9 +21,9 @@ This web app lets users discover and create events happening in Timișoara.
 ## Getting Started
 
 1. Install Python packages:
-  ```bash
-  pip install -r requirements.txt
-  ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 2. Update app/config.yaml with your PostgreSQL database details.
 3. Create the database tables by running the provided SQL
