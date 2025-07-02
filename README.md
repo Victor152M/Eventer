@@ -23,6 +23,14 @@ This web app lets users discover and create events happening in Timișoara.
 1. Install Python packages:
   ```bash
   pip install -r requirements.txt
+  ```
 
-
-
+2. Update app/config.yaml with your PostgreSQL database details.
+3. Create the database tables by running the provided SQL
+    ```bash
+    postgres_table_creation.sql
+    ```
+4. Run the Flask app
+   ```bash
+   run.py
+   ```
